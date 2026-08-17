@@ -1,0 +1,179 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+@theme inline {
+  --color-ink: #0A0A0C;
+  --color-graphite: #111210;
+  --color-surface: #151715;
+  --color-forest: #26372E;
+  --color-forestlight: #31473A;
+  --color-gold: #B49A67;
+  --color-champagne: #D1C0A0;
+  --color-ivory: #F3F0E8;
+  --color-muted: #9D9D96;
+
+  --font-sans: var(--font-jakarta), "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-serif: var(--font-cormorant), "Cormorant Garamond", Georgia, serif;
+}
+
+:root {
+  color-scheme: dark;
+  --background: #0A0A0C;
+  --foreground: #F3F0E8;
+}
+
+html {
+  scroll-behavior: auto;
+  background-color: #0A0A0C;
+  color: #F3F0E8;
+  font-size: 16px;
+}
+
+body {
+  background-color: #0A0A0C;
+  color: #F3F0E8;
+  font-family: var(--font-jakarta), "Plus Jakarta Sans", sans-serif;
+  font-weight: 300;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-jakarta), "Plus Jakarta Sans", sans-serif;
+  font-weight: 300;
+  letter-spacing: -0.02em;
+}
+
+b, strong {
+  font-weight: 500;
+}
+
+::selection {
+  background: #26372E;
+  color: #F3F0E8;
+}
+
+/* Glassmorphism */
+.glass {
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.hairline {
+  border-color: rgba(255, 255, 255, 0.07);
+}
+
+/* Underline Animation */
+.link-underline {
+  position: relative;
+}
+.link-underline::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 100%;
+  height: 1px;
+  background: #B49A67;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.link-underline:hover::after,
+.link-underline:focus-visible::after {
+  transform: scaleX(1);
+}
+
+/* Buttons */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: #26372E;
+  color: #F3F0E8;
+  border: 1px solid rgba(180, 154, 103, 0.35);
+  padding: 0.85rem 1.6rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  transition: background 0.35s ease, border-color 0.35s ease, transform 0.25s ease;
+  cursor: pointer;
+}
+.btn-primary:hover,
+.btn-primary:focus-visible {
+  background: #31473A;
+  border-color: rgba(180, 154, 103, 0.7);
+  transform: translateY(-1px);
+}
+.btn-primary svg,
+.btn-ghost svg {
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.btn-primary:hover svg,
+.btn-ghost:hover svg {
+  transform: translate(2px, -2px);
+}
+
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: #D1C0A0;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 0.85rem 1.6rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  transition: border-color 0.35s ease, color 0.35s ease, background 0.35s ease, transform 0.25s ease;
+  cursor: pointer;
+}
+.btn-ghost:hover,
+.btn-ghost:focus-visible {
+  border-color: rgba(180, 154, 103, 0.5);
+  color: #F3F0E8;
+  background: rgba(255, 255, 255, 0.03);
+  transform: translateY(-1px);
+}
+
+/* Marquee */
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 35s linear infinite;
+}
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+/* Topographic background */
+.topo-lines {
+  background-image: repeating-linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.015) 0px,
+    rgba(255, 255, 255, 0.015) 1px,
+    transparent 1px,
+    transparent 80px
+  );
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none;
+  }
+  * {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
