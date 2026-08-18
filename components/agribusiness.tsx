@@ -2,71 +2,132 @@
 
 import React from 'react'
 import Image from 'next/image'
-import { ArrowUpRight } from 'lucide-react'
+import Link from 'next/link'
+import { Sprout, FileCheck2, Landmark, Scale, ArrowUpRight } from 'lucide-react'
 
 interface AgribusinessProps {
-  onOpenTriage: () => void
+  onOpenTriagem: (origin: string) => void
 }
 
-export function Agribusiness({ onOpenTriage }: AgribusinessProps) {
-  const highlights = [
-    { tag: 'Rural', text: 'Alongamento de dívida rural (MCR e Súmula 298 STJ)' },
-    { tag: 'Rural', text: 'Revisão de juros e encargos em Cédulas Rurais' },
-    { tag: 'Bancário', text: 'Defesa contra penhora de safras e maquinário' },
-    { tag: 'Agro', text: 'Consultoria para produtores e cooperativas' },
-  ]
-
+export function Agribusiness({ onOpenTriagem }: AgribusinessProps) {
   return (
-    <section id="agronegocio" className="relative py-24 md:py-36 overflow-hidden scroll-mt-24">
-      {/* Background Image using next/image */}
-      <div className="absolute inset-0 z-0">
-        <Image
-          src="/assets/agronegocio.png"
-          alt="Lavoura e agronegócio brasileiro"
-          fill
-          sizes="100vw"
-          className="object-cover"
-        />
-        <div className="absolute inset-0 bg-ink/85 backdrop-blur-[2px]" aria-hidden="true" />
+    <section
+      id="agronegocio"
+      className="py-16 md:py-24 bg-surface border-y hairline scroll-mt-16 relative overflow-hidden w-full"
+    >
+      {/* Background Panorâmico com Blend Escuro */}
+      <div
+        className="absolute inset-0 z-0 pointer-events-none overflow-hidden"
+        aria-hidden="true"
+      >
+        <div className="absolute right-0 top-0 bottom-0 w-full lg:w-[65%] h-full">
+          <Image
+            src="/assets/agronegocio.png"
+            alt="Operações Rurais Braga & Xavier"
+            fill
+            sizes="(max-width: 1024px) 100vw, 65vw"
+            className="object-cover object-center opacity-25 lg:opacity-40 filter contrast-125 brightness-75"
+          />
+        </div>
+
+        <div className="absolute inset-0 bg-gradient-to-r from-surface via-surface/90 via-50% lg:via-55% to-transparent" />
+        <div className="absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-surface to-transparent" />
+        <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-surface to-transparent" />
+        <div className="absolute inset-0 topo-lines opacity-30 mix-blend-overlay" />
       </div>
 
-      <div className="relative z-10 max-w-[1440px] mx-auto px-5 md:px-[6vw]">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          <div className="lg:col-span-6">
-            <p className="text-[0.65rem] tracking-[0.35em] uppercase text-gold mb-4">
-              Direito Rural
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 md:px-[5vw] relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+          {/* Coluna Texto */}
+          <div
+            id="agro-text-col"
+            className="reveal-on-scroll lg:col-span-6 xl:col-span-5 glass p-6 sm:p-8 md:p-10 border border-white/15 bg-surface/90 backdrop-blur-2xl shadow-2xl relative"
+          >
+            <div className="w-10 h-0.5 bg-gold mb-3.5" />
+            <p className="text-[.6rem] tracking-[.3em] uppercase text-gold font-medium mb-1.5 flex items-center gap-2">
+              <Sprout className="w-3.5 h-3.5 text-gold" /> DIREITO RURAL &bull; CRÉDITO &amp; SAFRA
             </p>
-            <h2 className="font-serif text-[clamp(2.2rem,4.5vw,4.5rem)] leading-[1.02] text-balance font-normal text-ivory">
+            <h2 className="font-light text-2xl sm:text-3xl lg:text-4xl leading-[1.12] text-balance text-ivory tracking-tight">
               Crédito rural também exige estratégia jurídica.
             </h2>
-            <p className="mt-8 text-ivory/80 leading-relaxed text-base md:text-lg max-w-[58ch]">
+            <p className="mt-3.5 text-ivory/80 leading-relaxed text-xs sm:text-sm max-w-[52ch] font-light">
               A legislação agrária e o Manual de Crédito Rural conferem ao produtor rural o direito
               subjetivo ao alongamento de suas dívidas bancárias em casos de frustração de safra,
-              intempéries climáticas ou queda de preços de mercado.
+              intempéries climáticas ou oscilações graves de mercado.
             </p>
-            <button
-              onClick={onOpenTriage}
-              className="btn-primary mt-10"
-            >
-              Falar com advogado do agro
-              <ArrowUpRight className="w-4 h-4" />
-            </button>
+            <div className="mt-5 pt-3 border-t hairline flex items-center justify-between text-[.58rem] tracking-[.18em] uppercase text-champagne font-medium">
+              <span>SÚMULA 298 STJ</span>
+              <span>PROTEÇÃO DA PRODUÇÃO</span>
+            </div>
+            <div className="mt-5 flex flex-col sm:flex-row gap-3">
+              <Link
+                href="/agronegocio"
+                className="btn-primary cursor-pointer justify-center !py-2.5 !px-4 !text-xs"
+              >
+                <span>Conhecer atuação no Agro</span>
+                <ArrowUpRight className="w-3.5 h-3.5" />
+              </Link>
+              <button
+                onClick={() => onOpenTriagem('agro')}
+                className="btn-ghost cursor-pointer justify-center !py-2.5 !px-4 !text-xs bg-surface/50"
+              >
+                <span>Falar com especialista</span>
+              </button>
+            </div>
           </div>
 
-          <div className="lg:col-span-5 lg:col-start-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
-            {highlights.map((item, idx) => (
-              <div
-                key={idx}
-                className={`glass p-6 border border-white/10 hover:border-gold/40 transition-colors ${
-                  idx % 2 === 1 ? 'sm:mt-6' : ''
-                }`}
-              >
-                <p className="text-[0.6rem] tracking-[0.25em] uppercase text-gold mb-2 font-medium">
-                  {item.tag}
+          {/* Coluna Cards de Atuação */}
+          <div
+            id="agro-cards-col"
+            className="lg:col-span-6 xl:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4"
+          >
+            <div className="reveal-on-scroll agro-card glass p-4 border border-white/10 hover:border-gold/40 transition-colors">
+              <div className="flex items-center gap-2 mb-1.5">
+                <FileCheck2 className="w-3.5 h-3.5 text-gold" />
+                <p className="text-[.6rem] tracking-[.2em] uppercase text-gold font-medium">
+                  Alongamento Rural
                 </p>
-                <p className="text-sm text-ivory/90 leading-relaxed font-normal">{item.text}</p>
               </div>
-            ))}
+              <p className="text-xs text-ivory/85 leading-relaxed font-light">
+                Prorrogação de vencimento com base no MCR e Súmula 298 do STJ em caso de quebra de safra.
+              </p>
+            </div>
+
+            <div className="reveal-on-scroll reveal-delay-1 agro-card glass p-4 border border-white/10 hover:border-gold/40 transition-colors sm:translate-y-2">
+              <div className="flex items-center gap-2 mb-1.5">
+                <Landmark className="w-3.5 h-3.5 text-gold" />
+                <p className="text-[.6rem] tracking-[.2em] uppercase text-gold font-medium">
+                  Revisão de Crédito
+                </p>
+              </div>
+              <p className="text-xs text-ivory/85 leading-relaxed font-light">
+                Auditoria de juros, taxas e impugnação de encargos indevidos em cédulas CPR e CCR.
+              </p>
+            </div>
+
+            <div className="reveal-on-scroll reveal-delay-2 agro-card glass p-4 border border-white/10 hover:border-gold/40 transition-colors">
+              <div className="flex items-center gap-2 mb-1.5">
+                <Scale className="w-3.5 h-3.5 text-gold" />
+                <p className="text-[.6rem] tracking-[.2em] uppercase text-gold font-medium">
+                  Defesa Patrimonial
+                </p>
+              </div>
+              <p className="text-xs text-ivory/85 leading-relaxed font-light">
+                Blindagem contra penhora indevida de safras, terras produtivas, silos e maquinários.
+              </p>
+            </div>
+
+            <div className="reveal-on-scroll reveal-delay-3 agro-card glass p-4 border border-white/10 hover:border-gold/40 transition-colors sm:translate-y-2">
+              <div className="flex items-center gap-2 mb-1.5">
+                <Sprout className="w-3.5 h-3.5 text-gold" />
+                <p className="text-[.6rem] tracking-[.2em] uppercase text-gold font-medium">
+                  Assessoria no Campo
+                </p>
+              </div>
+              <p className="text-xs text-ivory/85 leading-relaxed font-light">
+                Acompanhamento preventivo e contencioso contínuo para produtores e cooperativas.
+              </p>
+            </div>
           </div>
         </div>
       </div>

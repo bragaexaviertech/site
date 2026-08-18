@@ -1,69 +1,81 @@
 'use client'
 
 import React from 'react'
-import { ArrowUpRight, MessageCircle } from 'lucide-react'
+import Image from 'next/image'
+import { MessageCircle, ArrowUpRight } from 'lucide-react'
 
 interface CTASectionProps {
-  onOpenTriage: () => void
+  onOpenTriagem: (origin: string) => void
 }
 
-export function CTASection({ onOpenTriage }: CTASectionProps) {
+export function CTASection({ onOpenTriagem }: CTASectionProps) {
   return (
-    <>
-      {/* Intermediate Banner */}
-      <section className="py-20 md:py-28 bg-graphite border-y hairline topo-lines">
-        <div className="max-w-[1440px] mx-auto px-5 md:px-[6vw]">
-          <div className="max-w-4xl">
-            <p className="text-[0.65rem] tracking-[0.35em] uppercase text-gold mb-4">
-              Análise do Caso
-            </p>
-            <h2 className="font-serif text-[clamp(2.2rem,4.5vw,4.5rem)] leading-[1.02] text-balance font-normal text-ivory">
-              Quanto antes o cenário é compreendido, melhores podem ser as decisões jurídicas.
+    <section
+      id="final-cta-section"
+      className="relative min-h-[50vh] flex items-center bg-[#15231C] overflow-hidden w-full py-16 sm:py-24"
+    >
+      {/* Background Fotográfico Cinematográfico */}
+      <div
+        className="absolute inset-0 z-0 pointer-events-none overflow-hidden"
+        aria-hidden="true"
+      >
+        <div className="absolute right-0 top-0 bottom-0 w-full lg:w-[65%] h-full">
+          <Image
+            src="/assets/equipe-editorial.jpg"
+            alt="Dr. Braga e Dr. Xavier"
+            fill
+            sizes="100vw"
+            className="object-cover object-[center_20%] opacity-20 lg:opacity-35 filter contrast-125 brightness-75"
+          />
+        </div>
+
+        <div className="absolute inset-0 bg-gradient-to-r from-[#15231C] via-[#15231C]/95 via-50% lg:via-55% to-transparent" />
+        <div className="absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-ink to-transparent" />
+        <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-ink to-transparent" />
+        <div className="absolute inset-0 topo-lines opacity-30 mix-blend-overlay" />
+      </div>
+
+      <span
+        id="cta-watermark"
+        className="absolute inset-0 flex items-center justify-center text-[14vw] font-light text-white/[0.02] select-none pointer-events-none font-serif italic z-0"
+        aria-hidden="true"
+      >
+        Estratégia
+      </span>
+
+      <div className="relative max-w-[1440px] mx-auto w-full px-4 sm:px-6 md:px-[5vw] z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          <div id="cta-text-col" className="reveal-on-scroll lg:col-span-8 xl:col-span-7">
+            <h2 className="font-light text-2xl sm:text-3xl md:text-4xl lg:text-5xl leading-[1.08] text-ivory text-balance tracking-tight">
+              Seu caso merece estratégia antes de qualquer decisão.
             </h2>
-            <p className="mt-6 text-muted leading-relaxed max-w-[60ch] text-base md:text-lg">
-              Converse com o Braga &amp; Xavier Advogados e apresente sua situação para avaliação
-              técnica e sigilosa.
+            <p className="mt-4 text-ivory/80 text-xs sm:text-sm md:text-base leading-relaxed max-w-[50ch] font-light">
+              Fale diretamente com os advogados especialistas do Braga &amp; Xavier e receba uma
+              análise preliminar e individualizada da sua situação.
             </p>
-            <button
-              onClick={onOpenTriage}
-              className="btn-primary mt-8"
-            >
-              Solicitar análise do caso
-              <ArrowUpRight className="w-4 h-4" />
-            </button>
+
+            <div className="mt-7 flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5">
+              <button
+                onClick={() => onOpenTriagem('final_cta')}
+                className="btn-primary justify-center shadow-2xl !py-3 !px-6 !text-xs cursor-pointer"
+              >
+                <MessageCircle className="w-4 h-4 text-champagne" />
+                <span>Conversar pelo WhatsApp</span>
+                <ArrowUpRight className="w-3.5 h-3.5" />
+              </button>
+
+              <a
+                href="https://wa.me/5531971746972"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-ghost justify-center backdrop-blur-md bg-ink/30 !py-3 !px-6 !text-xs hover:bg-white/[0.06]"
+              >
+                <span>(31) 97174-6972</span>
+              </a>
+            </div>
           </div>
         </div>
-      </section>
-
-      {/* Final Grand CTA */}
-      <section className="relative min-h-[70vh] flex items-center bg-forest overflow-hidden">
-        <div className="absolute inset-0 topo-lines opacity-60" aria-hidden="true" />
-        <div className="relative max-w-[1440px] mx-auto w-full px-5 md:px-[6vw] py-24 text-center">
-          <h2 className="font-serif text-[clamp(2.5rem,5.5vw,6rem)] leading-[0.98] max-w-4xl mx-auto text-ivory text-balance font-normal">
-            Seu caso merece estratégia antes de qualquer decisão.
-          </h2>
-          <p className="mt-6 text-ivory/80 text-base md:text-xl max-w-2xl mx-auto">
-            Fale diretamente com os advogados especialistas do Braga &amp; Xavier.
-          </p>
-
-          <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
-            <button
-              onClick={onOpenTriage}
-              className="inline-flex items-center gap-3 bg-ink text-ivory border border-gold/40 px-8 py-4 text-xs tracking-[0.14em] uppercase hover:border-gold transition-colors font-medium cursor-pointer shadow-2xl"
-            >
-              <MessageCircle className="w-5 h-5 text-champagne" />
-              Conversar pelo WhatsApp
-            </button>
-          </div>
-
-          <p className="mt-8 font-serif text-2xl md:text-3xl text-champagne">
-            (31) 97174-6972
-          </p>
-          <p className="mt-2 text-xs tracking-wider uppercase text-ivory/60">
-            Atendimento em Montes Claros e em todo o Brasil
-          </p>
-        </div>
-      </section>
-    </>
+      </div>
+    </section>
   )
 }

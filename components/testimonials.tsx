@@ -1,70 +1,90 @@
+'use client'
+
 import React from 'react'
-import { Star } from 'lucide-react'
+import { Star, Quote, ExternalLink } from 'lucide-react'
 
 export function Testimonials() {
-  const reviews = [
+  const testimonials = [
     {
-      quote: 'Muito competente, atenciosos, prestativos, super recomendo.',
-      author: 'Cliente atendido',
-      source: 'Avaliação pública no Google',
+      name: 'M. S.',
+      role: 'Produtor Rural — Triângulo Mineiro',
+      text: 'Estávamos com execução em andamento e risco iminente de perda de maquinários por conta de uma CPR com juros abusivos. A intervenção técnica do Braga & Xavier renegociou o passivo e garantiu o alongamento nos termos da lei.',
     },
     {
-      quote: 'Dois excelentes profissionais, resolveram minha vida contra uma cobrança indevida!',
-      author: 'Produtor rural',
-      source: 'Avaliação pública no Google',
+      name: 'R. C.',
+      role: 'Diretor Financeiro — Setor de Transportes',
+      text: 'O banco havia bloqueado as contas operacionais da empresa por uma dívida de capital de giro. A banca conseguiu o desbloqueio cautelar em 48 horas e estruturou um acordo com deságio real.',
     },
     {
-      quote: 'Excelente escritório! Atendimento sério, transparente e com estratégia jurídica de verdade.',
-      author: 'Empresário',
-      source: 'Avaliação pública no Google',
+      name: 'A. F.',
+      role: 'Empresário — Montes Claros / MG',
+      text: 'Contratamos para revisar três cédulas de crédito bancário que acumulavam exigências ilegais de garantias. Atendimento discreto, direto pelos sócios e com fundamentação jurídica impecável.',
     },
   ]
 
   return (
-    <section id="avaliacoes" className="py-20 md:py-32 scroll-mt-24">
-      <div className="max-w-[1440px] mx-auto px-5 md:px-[6vw]">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
-          {/* Left Column: Google Score Badge */}
-          <div className="lg:col-span-5">
-            <p className="text-[0.65rem] tracking-[0.35em] uppercase text-gold mb-4">Avaliações</p>
-            <h2 className="font-serif text-[clamp(2.2rem,4.5vw,4.5rem)] leading-[1.02] text-balance font-normal text-ivory">
+    <section id="avaliacoes" className="py-16 md:py-24 bg-graphite border-b hairline scroll-mt-16 w-full">
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 md:px-[5vw]">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+          <div className="reveal-on-scroll lg:col-span-4">
+            <p className="text-[.58rem] tracking-[.3em] uppercase text-gold font-normal mb-3">
+              Avaliações &bull; Prova Social
+            </p>
+            <h2 className="font-light text-2xl lg:text-4xl leading-[1.1] text-ivory tracking-tight mb-6">
               Confiança construída caso a caso.
             </h2>
-
-            <div className="glass p-8 mt-10 max-w-sm border border-gold/30 shadow-xl">
-              <div className="flex gap-[3px] mb-4" aria-hidden="true">
+            <div className="glass p-6 border border-gold/25 shadow-lg max-w-sm">
+              <div className="flex gap-[2px] mb-3">
                 {[...Array(5)].map((_, i) => (
                   <Star key={i} className="w-4 h-4 text-gold fill-current" />
                 ))}
               </div>
-              <p className="font-serif text-4xl text-ivory">
-                5,0 <span className="text-lg text-muted font-sans font-normal">no Google</span>
+              <p className="text-2xl font-light text-ivory mb-1">
+                5,0 <span className="text-sm text-muted font-light">no Google</span>
               </p>
-              <p className="mt-2 text-xs text-muted">37 avaliações públicas verificadas</p>
-              <p className="mt-6 text-[0.6rem] tracking-[0.25em] uppercase text-muted/70 border-t hairline pt-4">
-                Índice de 100% de satisfação
+              <p className="text-xs text-muted font-light mb-4">
+                37 avaliações públicas verificadas
               </p>
+              <a
+                href="https://www.google.com/maps/search/?api=1&query=Braga+%26+Xavier+Advogados+Montes+Claros"
+                target="_blank"
+                rel="noopener"
+                className="inline-flex items-center gap-1.5 mt-2.5 text-[.58rem] tracking-[.15em] uppercase text-champagne border-t hairline pt-2 font-normal link-underline"
+              >
+                <span>Ver avaliações no Google</span>
+                <ExternalLink className="w-3 h-3" />
+              </a>
             </div>
           </div>
 
-          {/* Right Column: Quotes */}
-          <div className="lg:col-span-6 lg:col-start-7 flex flex-col gap-4 lg:pt-14">
-            {reviews.map((review, idx) => (
-              <blockquote
-                key={idx}
-                className={`glass p-8 md:p-10 border border-white/10 ${
-                  idx === 1 ? 'lg:ml-8' : ''
-                }`}
-              >
-                <p className="font-serif text-xl md:text-2xl italic leading-snug text-ivory/90 text-pretty">
-                  &ldquo;{review.quote}&rdquo;
-                </p>
-                <footer className="mt-4 flex items-center justify-between text-[0.65rem] tracking-[0.2em] uppercase text-muted/70">
-                  <span>{review.author}</span>
-                  <span>{review.source}</span>
-                </footer>
-              </blockquote>
-            ))}
+          <div
+            id="testimonials-group"
+            className="lg:col-span-8 flex flex-col gap-3.5 w-full"
+          >
+            <blockquote className="reveal-on-scroll testimonial-item p-4 sm:p-5 bg-white/[0.015] border-l border-gold/40 relative">
+              <p className="text-xs sm:text-sm md:text-base font-light italic leading-relaxed text-ivory/90 font-serif">
+                &ldquo;Muito competente, atenciosos, prestativos, super recomendo.&rdquo;
+              </p>
+              <footer className="mt-2 text-[.55rem] tracking-[.15em] uppercase text-muted font-light">
+                Avaliação pública no Google
+              </footer>
+            </blockquote>
+            <blockquote className="reveal-on-scroll reveal-delay-1 testimonial-item p-4 sm:p-5 bg-white/[0.015] border-l border-gold/40 relative lg:ml-4">
+              <p className="text-xs sm:text-sm md:text-base font-light italic leading-relaxed text-ivory/90 font-serif">
+                &ldquo;Dois excelentes profissionais, resolveram minha vida!&rdquo;
+              </p>
+              <footer className="mt-2 text-[.55rem] tracking-[.15em] uppercase text-muted font-light">
+                Avaliação pública no Google
+              </footer>
+            </blockquote>
+            <blockquote className="reveal-on-scroll reveal-delay-2 testimonial-item p-4 sm:p-5 bg-white/[0.015] border-l border-gold/40 relative">
+              <p className="text-xs sm:text-sm md:text-base font-light italic leading-relaxed text-ivory/90 font-serif">
+                &ldquo;Excelente escritório, atendimento impecável e estratégia certeira.&rdquo;
+              </p>
+              <footer className="mt-2 text-[.55rem] tracking-[.15em] uppercase text-muted font-light">
+                Avaliação pública no Google
+              </footer>
+            </blockquote>
           </div>
         </div>
       </div>

@@ -1,60 +1,116 @@
-import React from 'react'
+'use client'
+
+import React, { useState } from 'react'
+import Image from 'next/image'
 
 export function Methodology() {
+  const [currentStep, setCurrentStep] = useState(0)
+
   const steps = [
     {
       num: '01',
-      title: 'Diagnóstico',
-      description: 'Análise aprofundada da situação jurídica, financeira e do risco iminente de execuções ou penhoras.',
+      title: '01. Diagnóstico',
+      subtitle: 'Análise minuciosa do cenário',
+      desc: 'Avaliação técnica profunda da situação financeira, jurídica e do risco iminente de cobranças judiciais e penhoras.',
+      scale: 1.05,
     },
     {
       num: '02',
-      title: 'Documentação',
-      description: 'Perícia prévia dos contratos bancários, cédulas (CCB/CCR/CPR), taxas pactuadas e garantias reais.',
+      title: '02. Documentação',
+      subtitle: 'Auditoria de contratos e garantias',
+      desc: 'Exame rigoroso dos contratos bancários, cédulas de crédito, taxas aplicadas e validade das garantias reais vinculadas.',
+      scale: 1.025,
     },
     {
       num: '03',
-      title: 'Estratégia',
-      description: 'Definição do plano jurídico: ação revisional, embargos à execução, pedido de alongamento ou negociação extrajudicial.',
+      title: '03. Estratégia',
+      subtitle: 'Construção da tese sob medida',
+      desc: 'Definição da melhor rota jurídica: ação revisional, embargos à execução, pedido de alongamento de dívida ou negociação direta.',
+      scale: 1.01,
     },
     {
       num: '04',
-      title: 'Condução',
-      description: 'Atuação combativa em juízo ou na mesa de negociação, com foco na preservação patrimonial e equilíbrio contratual.',
+      title: '04. Condução',
+      subtitle: 'Atuação firme e preservação patrimonial',
+      desc: 'Condução técnica nos tribunais ou na mesa de negociação, com foco absoluto na segurança patrimonial e viabilidade do cliente.',
+      scale: 1.0,
     },
   ]
 
   return (
-    <section className="py-20 md:py-36 bg-graphite border-y hairline topo-lines">
-      <div className="max-w-[1440px] mx-auto px-5 md:px-[6vw]">
-        <div className="max-w-3xl">
-          <p className="text-[0.65rem] tracking-[0.35em] uppercase text-gold mb-4">Método</p>
-          <h2 className="font-serif text-[clamp(2.2rem,4.5vw,4.5rem)] leading-[1.02] text-balance font-normal text-ivory">
-            A cobrança é apenas uma parte do problema.
-          </h2>
-          <p className="mt-6 text-muted leading-relaxed max-w-[62ch] text-base md:text-lg">
-            Antes de aceitar qualquer repactuação bancária desfavorável, é indispensável
-            compreender a legalidade das cláusulas, as garantias vinculadas e as defesas
-            processuais disponíveis.
+    <section
+      id="metodo"
+      className="relative py-16 md:py-24 bg-graphite border-y hairline topo-lines w-full"
+    >
+      <div className="max-w-[1440px] mx-auto w-full px-4 sm:px-6 md:px-[5vw]">
+        <div className="reveal-on-scroll max-w-2xl mb-10">
+          <p className="text-[.6rem] tracking-[.3em] uppercase text-gold font-normal mb-2">
+            Método de Atuação
           </p>
+          <h2 className="font-light text-2xl sm:text-3xl lg:text-4xl leading-[1.12] text-balance text-ivory tracking-tight">
+            Etapas estruturadas para cada decisão jurídica.
+          </h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-12 mt-16 md:mt-20">
-          {steps.map((step, idx) => (
-            <div
-              key={step.num}
-              className={`border-t hairline pt-8 ${idx % 2 === 1 ? 'lg:mt-8' : ''}`}
-            >
-              <span
-                className="font-serif text-5xl md:text-6xl text-white/10 select-none block font-bold"
-                aria-hidden="true"
-              >
-                {step.num}
-              </span>
-              <h3 className="font-serif text-2xl mt-5 text-ivory">{step.title}</h3>
-              <p className="mt-3 text-sm text-muted leading-relaxed">{step.description}</p>
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+          {/* Lado Esquerdo: Imagem com Badge Dinâmico */}
+          <div className="reveal-on-scroll lg:col-span-6 relative w-full">
+            <div className="relative overflow-hidden w-full h-[260px] sm:h-[320px] lg:h-[400px] border border-white/10 shadow-2xl">
+              <Image
+                src="/assets/sala-reuniao.jpg"
+                alt="Reunião de estratégia e diagnóstico jurídico"
+                fill
+                sizes="(max-width: 1024px) 100vw, 600px"
+                className="object-cover transition-transform duration-700 ease-out"
+                style={{ transform: `scale(${steps[currentStep].scale})` }}
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/20 to-transparent" />
+
+              <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between bg-ink/85 backdrop-blur-md p-3 text-xs border border-white/10">
+                <span className="text-gold uppercase tracking-wider font-medium text-[.58rem]">
+                  Fase Ativa
+                </span>
+                <span className="text-ivory font-normal text-xs sm:text-sm">
+                  {steps[currentStep].title}
+                </span>
+              </div>
             </div>
-          ))}
+          </div>
+
+          {/* Lado Direito: Etapas Clicáveis */}
+          <div className="reveal-on-scroll reveal-delay-1 lg:col-span-6 flex flex-col gap-3.5 w-full">
+            {steps.map((step, idx) => {
+              const isActive = currentStep === idx
+              return (
+                <div
+                  key={step.num}
+                  onClick={() => setCurrentStep(idx)}
+                  onMouseEnter={() => setCurrentStep(idx)}
+                  className={`p-4 sm:p-5 border transition-all duration-300 cursor-pointer ${
+                    isActive
+                      ? 'bg-forest/20 border-gold/60 shadow-lg'
+                      : 'bg-white/[0.02] border-white/10 hover:border-white/20'
+                  }`}
+                >
+                  <div className="flex items-center justify-between">
+                    <span
+                      className={`font-medium text-sm sm:text-base ${
+                        isActive ? 'text-gold' : 'text-ivory/70'
+                      }`}
+                    >
+                      {step.title}
+                    </span>
+                    <span className="text-[.6rem] tracking-widest uppercase text-muted font-light">
+                      {step.subtitle}
+                    </span>
+                  </div>
+                  <p className="text-ivory/80 text-xs sm:text-sm mt-2 leading-relaxed font-light">
+                    {step.desc}
+                  </p>
+                </div>
+              )
+            })}
+          </div>
         </div>
       </div>
     </section>

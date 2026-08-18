@@ -1,25 +1,17 @@
 import React from 'react'
 
 export function Marquee() {
-  const items = [
-    'DIREITO BANCÁRIO',
-    'DEFESA PATRIMONIAL',
-    'ALONGAMENTO DE CRÉDITO RURAL',
-    'REESTRUTURAÇÃO EMPRESARIAL',
-    'SÚMULA 298 DO STJ',
-    'ESTRATÉGIA JURÍDICA',
-  ]
-
-  const textSequence = items.join(' — ') + ' — '
-
   return (
-    <div className="border-y hairline py-4 overflow-hidden bg-graphite/40" aria-hidden="true">
+    <div
+      className="border-y hairline py-2.5 overflow-hidden bg-graphite/40 w-full select-none"
+      aria-hidden="true"
+    >
       <div className="marquee-track">
-        <span className="font-serif text-base md:text-lg tracking-[0.25em] text-muted/60 whitespace-nowrap pr-6 select-none">
-          {textSequence}
+        <span className="text-[.6rem] tracking-[.25em] font-light uppercase text-muted/50 whitespace-nowrap pr-8">
+          DIREITO BANCÁRIO &bull; DEFESA PATRIMONIAL &bull; REESTRUTURAÇÃO EMPRESARIAL &bull; CRÉDITO RURAL &bull; SÚMULA 298 STJ &bull; ESTRATÉGIA &bull;&nbsp;
         </span>
-        <span className="font-serif text-base md:text-lg tracking-[0.25em] text-muted/60 whitespace-nowrap pr-6 select-none">
-          {textSequence}
+        <span className="text-[.6rem] tracking-[.25em] font-light uppercase text-muted/50 whitespace-nowrap pr-8">
+          DIREITO BANCÁRIO &bull; DEFESA PATRIMONIAL &bull; REESTRUTURAÇÃO EMPRESARIAL &bull; CRÉDITO RURAL &bull; SÚMULA 298 STJ &bull; ESTRATÉGIA &bull;&nbsp;
         </span>
       </div>
     </div>

@@ -1,127 +1,285 @@
-'use client'
-
 import React from 'react'
-import { Landmark, Building2, Wheat, ShieldCheck, ArrowUpRight } from 'lucide-react'
+import Image from 'next/image'
+import Link from 'next/link'
+import { Landmark, Building2, ShieldCheck, Wheat, ArrowUpRight, AlertCircle } from 'lucide-react'
 
 interface PracticeAreasProps {
-  onSelectArea?: (areaKey: string) => void
+  onOpenTriagem: (origin: string) => void
 }
 
-export function PracticeAreas({ onSelectArea }: PracticeAreasProps) {
+export function PracticeAreas({ onOpenTriagem }: PracticeAreasProps) {
   return (
-    <section id="bancario" className="py-20 md:py-32 bg-graphite border-y hairline scroll-mt-24">
-      <div className="max-w-[1440px] mx-auto px-5 md:px-[6vw]">
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-14">
+    <section
+      id="bancario"
+      className="py-16 md:py-24 bg-graphite border-y hairline scroll-mt-16 w-full relative overflow-hidden"
+    >
+      {/* Glow de fundo ambiental */}
+      <div className="absolute top-1/2 -left-40 w-96 h-96 bg-forest/20 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-0 right-0 w-96 h-96 bg-gold/5 rounded-full blur-3xl pointer-events-none" />
+
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 md:px-[5vw] relative z-10">
+        <div
+          id="practice-header"
+          className="reveal-on-scroll flex flex-col md:flex-row md:items-end md:justify-between gap-3 mb-10"
+        >
           <div>
-            <p className="text-[0.65rem] tracking-[0.35em] uppercase text-gold mb-4">
-              Áreas de Atuação
+            <p className="text-[.6rem] tracking-[.3em] uppercase text-gold font-normal mb-2">
+              Áreas de Atuação Especializadas
             </p>
-            <h2 className="font-serif text-[clamp(2.2rem,4.5vw,4.5rem)] leading-[1.02] max-w-[18ch] text-balance font-normal text-ivory">
+            <h2 className="font-light text-2xl sm:text-3xl lg:text-4xl leading-[1.12] max-w-[24ch] text-balance text-ivory tracking-tight">
               Atuação concentrada onde patrimônio e crédito se encontram.
             </h2>
           </div>
-          <span className="font-serif text-8xl text-white/5 select-none hidden md:block font-bold" aria-hidden="true">
+          <span
+            className="text-6xl font-light text-white/5 select-none hidden md:block font-serif italic"
+            aria-hidden="true"
+          >
             02
           </span>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-4">
-          {/* Card 1: Direito Bancário */}
-          <article
-            onClick={() => onSelectArea?.('pessoa-fisica')}
-            className="area-card glass md:col-span-7 p-8 md:p-12 flex flex-col justify-between min-h-[300px] cursor-pointer group"
+        <div
+          id="practice-cards-group"
+          className="grid grid-cols-1 md:grid-cols-12 gap-4 sm:gap-5"
+        >
+          {/* Card 01: Direito Bancário */}
+          <Link
+            href="/direito-bancario"
+            id="card-bancario"
+            className="reveal-on-scroll area-panel md:col-span-7 p-6 sm:p-7 flex flex-col justify-between min-h-[250px] sm:min-h-[280px] relative overflow-hidden group cursor-pointer border border-white/10 hover:border-gold/50 bg-[#111210]/90 transition-all duration-500 rounded-none shadow-xl"
           >
-            <div>
+            {/* Background Fotográfico Cinematográfico */}
+            <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+              <Image
+                src="/assets/sala-reuniao.jpg"
+                alt="Ambiente de Direito Bancário"
+                fill
+                sizes="(max-width: 768px) 100vw, 55vw"
+                className="object-cover opacity-15 group-hover:opacity-35 filter contrast-125 brightness-75 scale-100 group-hover:scale-105 transition-all duration-700 ease-out"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/80 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-r from-ink/90 via-transparent to-transparent" />
+            </div>
+
+            {/* Número em Marca d'água no canto inferior direito para não conflitar com o botão */}
+            <span
+              className="absolute bottom-3 right-5 sm:bottom-4 sm:right-6 text-6xl sm:text-7xl font-light text-white/[0.04] group-hover:text-gold/[0.14] select-none pointer-events-none transition-colors font-serif italic z-0"
+              aria-hidden="true"
+            >
+              01
+            </span>
+
+            <div className="relative z-10">
               <div className="flex items-start justify-between">
-                <div className="p-2 bg-forest/40 border border-gold/30">
-                  <Landmark className="w-5 h-5 text-gold" aria-hidden="true" />
+                <div className="p-2 bg-forest/50 border border-gold/30 backdrop-blur-md">
+                  <Landmark className="w-4 h-4 text-gold" aria-hidden="true" />
                 </div>
-                <ArrowUpRight className="card-arrow w-5 h-5 text-muted group-hover:text-gold" aria-hidden="true" />
+                <span className="inline-flex items-center gap-1.5 text-[.65rem] text-gold uppercase tracking-wider font-medium group-hover:text-champagne transition-colors">
+                  <span>Ver página dedicada</span>
+                  <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                </span>
               </div>
-              <h3 className="font-serif text-2xl md:text-3xl mt-6 text-ivory">Direito Bancário</h3>
-              <p className="mt-4 text-muted leading-relaxed text-sm md:text-base max-w-[50ch]">
-                Atuação especializada em conflitos, revisão de contratos, defesas contra cobranças e
-                execuções abusivas de instituições financeiras.
+              <h3 className="text-lg sm:text-xl md:text-2xl font-normal mt-5 text-ivory group-hover:text-gold transition-colors">
+                Direito Bancário
+              </h3>
+              <p className="mt-2 text-ivory/70 leading-relaxed max-w-[48ch] text-xs sm:text-sm font-light">
+                Atuação combativa em conflitos, contratos, cobranças, defesas em execuções de
+                títulos e negociações com instituições financeiras.
               </p>
             </div>
-            <ul className="mt-6 flex flex-wrap gap-x-5 gap-y-2 text-[0.7rem] tracking-[0.12em] uppercase text-champagne/80">
+
+            <ul className="relative z-10 mt-5 flex flex-wrap gap-x-4 gap-y-1.5 text-[.65rem] sm:text-[.7rem] tracking-[.08em] uppercase text-champagne/90 font-medium">
               <li>• Revisão contratual</li>
               <li>• Defesa em execução</li>
-              <li>• Renegociação de dívidas</li>
-              <li>• Proteção de bens de família</li>
+              <li>• Renegociação com deságio</li>
+              <li>• Proteção de bem de família</li>
             </ul>
-          </article>
+          </Link>
 
-          {/* Card 2: Dívidas Empresariais */}
-          <article
-            onClick={() => onSelectArea?.('empresarial')}
-            className="area-card glass md:col-span-5 p-8 md:p-12 flex flex-col justify-between min-h-[300px] cursor-pointer group"
+          {/* Card 02: Dívidas Empresariais */}
+          <Link
+            href="/direito-bancario"
+            id="card-empresarial"
+            className="reveal-on-scroll reveal-delay-1 area-panel md:col-span-5 p-6 sm:p-7 flex flex-col justify-between min-h-[250px] sm:min-h-[280px] relative overflow-hidden group cursor-pointer border border-white/10 hover:border-gold/50 bg-[#111210]/90 transition-all duration-500 rounded-none shadow-xl"
           >
-            <div>
+            {/* Background Fotográfico Cinematográfico */}
+            <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+              <Image
+                src="/assets/escritorio.jpg"
+                alt="Ambiente de Gestão Empresarial"
+                fill
+                sizes="(max-width: 768px) 100vw, 45vw"
+                className="object-cover opacity-15 group-hover:opacity-35 filter contrast-125 brightness-75 scale-100 group-hover:scale-105 transition-all duration-700 ease-out"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/80 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-r from-ink/90 via-transparent to-transparent" />
+            </div>
+
+            {/* Número em Marca d'água no canto inferior direito */}
+            <span
+              className="absolute bottom-3 right-5 sm:bottom-4 sm:right-6 text-6xl sm:text-7xl font-light text-white/[0.04] group-hover:text-gold/[0.14] select-none pointer-events-none transition-colors font-serif italic z-0"
+              aria-hidden="true"
+            >
+              02
+            </span>
+
+            <div className="relative z-10">
               <div className="flex items-start justify-between">
-                <div className="p-2 bg-forest/40 border border-gold/30">
-                  <Building2 className="w-5 h-5 text-gold" aria-hidden="true" />
+                <div className="p-2 bg-forest/50 border border-gold/30 backdrop-blur-md">
+                  <Building2 className="w-4 h-4 text-gold" aria-hidden="true" />
                 </div>
-                <ArrowUpRight className="card-arrow w-5 h-5 text-muted group-hover:text-gold" aria-hidden="true" />
+                <span className="inline-flex items-center gap-1.5 text-[.65rem] text-gold uppercase tracking-wider font-medium group-hover:text-champagne transition-colors">
+                  <span>Ver página</span>
+                  <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                </span>
               </div>
-              <h3 className="font-serif text-2xl md:text-3xl mt-6 text-ivory">Dívidas Empresariais</h3>
-              <p className="mt-4 text-muted leading-relaxed text-sm md:text-base">
-                Análise e construção de estratégias jurídicas para empresas com passivo bancário
-                (CCBs, capital de giro, travas e execuções de garantias).
+              <h3 className="text-lg sm:text-xl md:text-2xl font-normal mt-5 text-ivory group-hover:text-gold transition-colors">
+                Dívidas Empresariais
+              </h3>
+              <p className="mt-2 text-ivory/70 leading-relaxed text-xs sm:text-sm font-light">
+                Análise e construção de alternativas jurídicas para empresas diante de endividamento
+                bancário (CCB, capital de giro, travas e garantias).
               </p>
             </div>
-            <p className="text-[0.7rem] tracking-[0.12em] uppercase text-champagne/80 mt-6">
-              Reestruturação de passivo &amp; proteção do caixa
+
+            <p className="relative z-10 text-[.62rem] sm:text-[.68rem] tracking-[.1em] uppercase text-champagne/90 mt-5 font-medium">
+              Reestruturação de passivos &bull; Proteção de caixa &rarr;
             </p>
-          </article>
+          </Link>
 
-          {/* Card 3: Direito Rural */}
-          <article
-            onClick={() => onSelectArea?.('produtor-rural')}
-            className="area-card glass md:col-span-5 p-8 md:p-12 flex flex-col justify-between min-h-[300px] cursor-pointer group"
+          {/* Card 03: Agronegócio */}
+          <Link
+            href="/agronegocio"
+            id="card-agro"
+            className="reveal-on-scroll reveal-delay-2 area-panel md:col-span-5 p-6 sm:p-7 flex flex-col justify-between min-h-[250px] sm:min-h-[280px] relative overflow-hidden group cursor-pointer border border-white/10 hover:border-gold/50 bg-[#111210]/90 transition-all duration-500 rounded-none shadow-xl"
           >
-            <div>
+            {/* Background Fotográfico Cinematográfico */}
+            <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+              <Image
+                src="/assets/agronegocio.png"
+                alt="Crédito e Agronegócio"
+                fill
+                sizes="(max-width: 768px) 100vw, 45vw"
+                className="object-cover opacity-20 group-hover:opacity-40 filter contrast-125 brightness-75 scale-100 group-hover:scale-105 transition-all duration-700 ease-out"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/80 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-r from-ink/90 via-transparent to-transparent" />
+            </div>
+
+            {/* Número em Marca d'água no canto inferior direito */}
+            <span
+              className="absolute bottom-3 right-5 sm:bottom-4 sm:right-6 text-6xl sm:text-7xl font-light text-white/[0.04] group-hover:text-gold/[0.14] select-none pointer-events-none transition-colors font-serif italic z-0"
+              aria-hidden="true"
+            >
+              03
+            </span>
+
+            <div className="relative z-10">
               <div className="flex items-start justify-between">
-                <div className="p-2 bg-forest/40 border border-gold/30">
-                  <Wheat className="w-5 h-5 text-gold" aria-hidden="true" />
+                <div className="p-2 bg-forest/50 border border-gold/30 backdrop-blur-md">
+                  <ShieldCheck className="w-4 h-4 text-gold" aria-hidden="true" />
                 </div>
-                <ArrowUpRight className="card-arrow w-5 h-5 text-muted group-hover:text-gold" aria-hidden="true" />
+                <span className="inline-flex items-center gap-1.5 text-[.65rem] text-gold uppercase tracking-wider font-medium group-hover:text-champagne transition-colors">
+                  <span>Ver página</span>
+                  <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                </span>
               </div>
-              <h3 className="font-serif text-2xl md:text-3xl mt-6 text-ivory">Direito Rural</h3>
-              <p className="mt-4 text-muted leading-relaxed text-sm md:text-base">
-                Assessoria em operações financeiras rurais, securitização, alongamento de dívidas
-                e proteção das atividades do homem do campo.
+              <h3 className="text-lg sm:text-xl md:text-2xl font-normal mt-5 text-ivory group-hover:text-gold transition-colors">
+                Agronegócio
+              </h3>
+              <p className="mt-2 text-ivory/70 leading-relaxed text-xs sm:text-sm font-light">
+                Estratégia jurídica aplicada às relações de crédito, CPRs, garantias e preservação
+                das atividades do produtor rural e cooperativas.
               </p>
             </div>
-            <p className="text-[0.7rem] tracking-[0.12em] uppercase text-champagne/80 mt-6">
-              Súmula 298 do STJ &amp; Manual de Crédito Rural
+
+            <p className="relative z-10 text-[.62rem] sm:text-[.68rem] tracking-[.1em] uppercase text-champagne/90 mt-5 font-medium">
+              Assessoria no campo &bull; Súmula 298 STJ &rarr;
             </p>
-          </article>
+          </Link>
 
-          {/* Card 4: Agronegócio */}
-          <article
-            onClick={() => onSelectArea?.('produtor-rural')}
-            className="area-card glass md:col-span-7 p-8 md:p-12 flex flex-col justify-between min-h-[300px] cursor-pointer group"
+          {/* Card 04: Direito Rural */}
+          <Link
+            href="/agronegocio"
+            id="card-rural"
+            className="reveal-on-scroll reveal-delay-3 area-panel md:col-span-7 p-6 sm:p-7 flex flex-col justify-between min-h-[250px] sm:min-h-[280px] relative overflow-hidden group cursor-pointer border border-white/10 hover:border-gold/50 bg-[#111210]/90 transition-all duration-500 rounded-none shadow-xl"
           >
-            <div>
+            {/* Background Fotográfico Cinematográfico */}
+            <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+              <Image
+                src="/assets/agronegocio.png"
+                alt="Direito Rural e Safra"
+                fill
+                sizes="(max-width: 768px) 100vw, 55vw"
+                className="object-cover opacity-20 group-hover:opacity-40 filter contrast-125 brightness-75 scale-100 group-hover:scale-105 transition-all duration-700 ease-out"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/80 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-r from-ink/90 via-transparent to-transparent" />
+            </div>
+
+            {/* Número em Marca d'água no canto inferior direito */}
+            <span
+              className="absolute bottom-3 right-5 sm:bottom-4 sm:right-6 text-6xl sm:text-7xl font-light text-white/[0.04] group-hover:text-gold/[0.14] select-none pointer-events-none transition-colors font-serif italic z-0"
+              aria-hidden="true"
+            >
+              04
+            </span>
+
+            <div className="relative z-10">
               <div className="flex items-start justify-between">
-                <div className="p-2 bg-forest/40 border border-gold/30">
-                  <ShieldCheck className="w-5 h-5 text-gold" aria-hidden="true" />
+                <div className="p-2 bg-forest/50 border border-gold/30 backdrop-blur-md">
+                  <Wheat className="w-4 h-4 text-gold" aria-hidden="true" />
                 </div>
-                <ArrowUpRight className="card-arrow w-5 h-5 text-muted group-hover:text-gold" aria-hidden="true" />
+                <span className="inline-flex items-center gap-1.5 text-[.65rem] text-gold uppercase tracking-wider font-medium group-hover:text-champagne transition-colors">
+                  <span>Ver página dedicada</span>
+                  <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                </span>
               </div>
-              <h3 className="font-serif text-2xl md:text-3xl mt-6 text-ivory">Agronegócio</h3>
-              <p className="mt-4 text-muted leading-relaxed text-sm md:text-base max-w-[50ch]">
-                Consultoria e defesa jurídica estratégica para produtores rurais e cooperativas em
-                Cédulas de Produto Rural (CPR), garantias de safra e penhora de imóveis rurais.
+              <h3 className="text-lg sm:text-xl md:text-2xl font-normal mt-5 text-ivory group-hover:text-gold transition-colors">
+                Direito Rural &amp; Crédito
+              </h3>
+              <p className="mt-2 text-ivory/70 leading-relaxed max-w-[48ch] text-xs sm:text-sm font-light">
+                Assessoria especializada em operações financeiras e endividamentos rurais, com ênfase
+                no direito subjetivo de alongamento de dívidas de safra.
               </p>
             </div>
-            <ul className="mt-6 flex flex-wrap gap-x-5 gap-y-2 text-[0.7rem] tracking-[0.12em] uppercase text-champagne/80">
-              <li>• Alongamento de dívida rural</li>
+
+            <ul className="relative z-10 mt-5 flex flex-wrap gap-x-4 gap-y-1.5 text-[.65rem] sm:text-[.7rem] tracking-[.08em] uppercase text-champagne/90 font-medium">
+              <li>• Alongamento de dívida rural (Súmula 298 STJ)</li>
+              <li>• Revisão de crédito rural</li>
               <li>• Impenhorabilidade da pequena propriedade</li>
-              <li>• Revisão de contratos de crédito agrícola</li>
             </ul>
-          </article>
+          </Link>
+        </div>
+
+        {/* Box de Alerta de Urgência & Prazos Processuais */}
+        <div className="reveal-on-scroll mt-8 p-6 sm:p-7 glass border border-gold/40 bg-forest/20 backdrop-blur-xl relative overflow-hidden shadow-2xl">
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-5 relative z-10">
+            <div className="flex items-start gap-4">
+              <div className="w-10 h-10 rounded-full bg-gold/15 border border-gold/40 flex items-center justify-center shrink-0 mt-0.5">
+                <AlertCircle className="w-5 h-5 text-gold" />
+              </div>
+              <div>
+                <p className="text-[.6rem] tracking-[.25em] uppercase text-gold font-medium mb-1">
+                  ATENÇÃO A PRAZOS PROCESSUAIS BANCÁRIOS
+                </p>
+                <h3 className="text-base sm:text-lg font-normal text-ivory tracking-tight">
+                  Recebeu citação, intimação judicial ou bloqueio em conta?
+                </h3>
+                <p className="text-xs sm:text-sm text-ivory/80 mt-1 max-w-2xl font-light leading-relaxed">
+                  Os prazos legais para Embargos à Execução e defesas contra constrições patrimoniais são peremptórios (geralmente de 15 dias). Uma atuação técnica imediata impede penhoras irreversíveis de bens, maquinários e faturamento.
+                </p>
+              </div>
+            </div>
+
+            <button
+              onClick={() => onOpenTriagem('urgencia_prazos')}
+              className="btn-primary !py-3 !px-6 !text-xs shrink-0 cursor-pointer justify-center shadow-xl"
+            >
+              <span>Avaliar Meu Prazo Agora</span>
+              <ArrowUpRight className="w-3.5 h-3.5" />
+            </button>
+          </div>
         </div>
       </div>
     </section>

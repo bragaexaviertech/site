@@ -1,117 +1,205 @@
 'use client'
 
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
 import Image from 'next/image'
-import { ArrowUpRight, Star, ShieldCheck } from 'lucide-react'
+import { ArrowUpRight, Star } from 'lucide-react'
+import gsap from 'gsap'
 
 interface HeroProps {
-  onOpenTriage: () => void
+  onOpenTriagem: (origin: string) => void
 }
 
-export function Hero({ onOpenTriage }: HeroProps) {
-  return (
-    <section id="inicio" className="relative min-h-[90vh] flex items-center topo-lines pt-32 pb-20">
-      <div className="max-w-[1440px] mx-auto w-full px-5 md:px-[6vw]">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
-          {/* Left Column */}
-          <div className="lg:col-span-7">
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-forest/40 border border-gold/30 mb-6">
-              <ShieldCheck className="w-3.5 h-3.5 text-gold" />
-              <span className="text-[0.65rem] md:text-xs tracking-[0.25em] uppercase text-gold font-medium">
-                Direito Bancário &bull; Empresarial &bull; Agronegócio
-              </span>
-            </div>
+export function Hero({ onOpenTriagem }: HeroProps) {
+  const sectionRef = useRef<HTMLElement>(null)
+  const bgMediaRef = useRef<HTMLDivElement>(null)
+  const headlineRef = useRef<HTMLHeadingElement>(null)
+  const textColRef = useRef<HTMLDivElement>(null)
 
-            <h1 className="font-serif text-[clamp(2.75rem,6.5vw,6.5rem)] leading-[0.98] text-ivory text-balance font-normal">
-              Estratégia jurídica para proteger patrimônio e reorganizar dívidas.
+  useEffect(() => {
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    if (reducedMotion) return
+
+    const ctx = gsap.context(() => {
+      const tl = gsap.timeline()
+
+      if (bgMediaRef.current) {
+        tl.fromTo(
+          bgMediaRef.current,
+          { opacity: 0 },
+          { opacity: 1, duration: 0.8, ease: 'power2.out' },
+          0
+        )
+      }
+
+      if (headlineRef.current) {
+        const lines = headlineRef.current.querySelectorAll('.reveal-line > span')
+        tl.fromTo(
+          lines,
+          { yPercent: 110, opacity: 0 },
+          { yPercent: 0, opacity: 1, duration: 0.85, stagger: 0.08, ease: 'power4.out' },
+          0.15
+        )
+      }
+
+      tl.fromTo(
+        '#hero-desc',
+        { opacity: 0, y: 15 },
+        { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out' },
+        0.35
+      )
+      tl.fromTo(
+        '#hero-cta',
+        { opacity: 0, y: 15 },
+        { opacity: 1, y: 0, duration: 0.5, ease: 'power3.out' },
+        0.45
+      )
+      tl.fromTo(
+        '#hero-proof',
+        { opacity: 0, y: 10 },
+        { opacity: 1, y: 0, duration: 0.5, ease: 'power3.out' },
+        0.55
+      )
+      tl.fromTo(
+        '#hero-floating-badge',
+        { opacity: 0, y: 20 },
+        { opacity: 1, y: 0, duration: 0.7, ease: 'power3.out' },
+        0.65
+      )
+    }, sectionRef)
+
+    return () => ctx.revert()
+  }, [])
+
+  return (
+    <section
+      ref={sectionRef}
+      id="inicio"
+      className="relative min-h-[100svh] lg:min-h-screen flex flex-col justify-end lg:justify-center pt-20 sm:pt-24 md:pt-32 pb-12 sm:pb-16 md:pb-20 overflow-hidden w-full bg-ink"
+    >
+      {/* Background Cinematográfico dos Sócios Fundadores */}
+      <div
+        ref={bgMediaRef}
+        className="absolute inset-0 z-0 pointer-events-none overflow-hidden"
+        aria-hidden="true"
+      >
+        {/* Imagem dos Sócios: Ampla à direita no desktop e topo no mobile sem cobrir o Dr. Braga */}
+        <div className="absolute top-0 inset-x-0 h-[48vh] sm:h-[54vh] lg:h-full lg:inset-auto lg:right-0 lg:w-[72%] xl:w-[70%] pointer-events-none overflow-hidden">
+          <Image
+            src="/assets/equipe-escritorio.jpg"
+            alt="Sócios Fundadores Dr. Braga e Dr. Xavier Advogados"
+            fill
+            priority
+            sizes="(max-width: 1024px) 100vw, 75vw"
+            className="object-cover object-[center_top] lg:object-[right_20%] opacity-95 filter contrast-[1.03] brightness-[0.98]"
+          />
+          {/* Degradê Mobile que funde suavemente a foto dos sócios com o fundo escuro */}
+          <div className="absolute inset-0 bg-gradient-to-b from-ink/60 via-transparent via-40% to-ink lg:hidden" />
+        </div>
+
+        {/* Degradê Superior para Header no Desktop */}
+        <div className="hidden lg:block absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-ink/80 via-ink/40 to-transparent" />
+
+        {/* Degradê Desktop Horizontal Recuado: Protege o texto à esquerda sem cobrir o Dr. Braga */}
+        <div className="hidden lg:block absolute inset-0 bg-gradient-to-r from-ink via-ink/90 via-25% lg:via-30% to-transparent" />
+
+        {/* Linhas topográficas sutis no fundo */}
+        <div className="absolute inset-0 topo-lines opacity-20 mix-blend-overlay" />
+
+        {/* Glow Dourado Ambiental sutil */}
+        <div className="absolute -top-24 right-1/4 w-96 h-96 bg-gold/10 rounded-full blur-3xl pointer-events-none" />
+      </div>
+
+      <div className="max-w-[1440px] mx-auto w-full px-4 sm:px-6 md:px-[5vw] relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          {/* Coluna de Texto Principal (inicia abaixo da foto no mobile e à esquerda no desktop) */}
+          <div
+            ref={textColRef}
+            id="hero-text-col"
+            className="lg:col-span-8 xl:col-span-7 mt-[34vh] sm:mt-[40vh] lg:mt-0 relative z-10"
+          >
+            <h1
+              ref={headlineRef}
+              id="hero-headline"
+              className="font-light text-3xl sm:text-4xl md:text-5xl lg:text-[3.2rem] xl:text-[3.6rem] leading-[1.08] text-ivory text-balance tracking-tight drop-shadow-sm"
+            >
+              <span className="reveal-line">
+                <span>Estratégia jurídica</span>
+              </span>
+              <span className="reveal-line">
+                <span>para proteger patrimônio</span>
+              </span>
+              <span className="reveal-line">
+                <span className="text-champagne font-serif italic text-[1.12em] tracking-normal font-normal">
+                  e reorganizar dívidas.
+                </span>
+              </span>
             </h1>
 
-            <p className="mt-8 max-w-[60ch] text-muted leading-relaxed text-base md:text-lg">
-              Atuação especializada em conflitos com instituições financeiras, reestruturação de
-              dívidas empresariais e demandas do produtor rural (alongamento de crédito rural e
-              defesa patrimonial). Atendimento em Montes Claros – MG e em todo o Brasil.
+            <p
+              id="hero-desc"
+              className="mt-5 max-w-[50ch] text-ivory/85 leading-relaxed text-sm sm:text-base font-light drop-shadow"
+            >
+              Atuação combativa em conflitos bancários, reestruturação de passivos empresariais e
+              demandas estratégicas do produtor rural em todo o território nacional.
             </p>
 
-            <div className="mt-10 flex flex-col sm:flex-row gap-4">
+            <div id="hero-cta" className="mt-7 sm:mt-8 flex flex-col sm:flex-row gap-3">
               <button
-                onClick={onOpenTriage}
-                className="btn-primary justify-center"
+                onClick={() => onOpenTriagem('hero')}
+                className="btn-primary justify-center shadow-2xl !py-3 !px-6 !text-xs cursor-pointer"
               >
-                Solicitar análise do caso
+                <span>Falar com um advogado</span>
                 <ArrowUpRight className="w-4 h-4" />
               </button>
               <a
                 href="#bancario"
-                className="btn-ghost justify-center"
+                className="btn-ghost justify-center backdrop-blur-md bg-ink/30 !py-3 !px-6 !text-xs hover:bg-white/[0.06] cursor-pointer"
               >
-                Conhecer áreas de atuação
+                <span>Conhecer áreas de atuação</span>
               </a>
             </div>
 
-            <div className="mt-8 flex flex-wrap items-center gap-x-8 gap-y-2 text-xs text-muted tracking-wide">
-              <span className="flex items-center gap-2">
-                <span className="w-1.5 h-1.5 bg-gold rounded-full" aria-hidden="true" />
-                Atendimento em todo o Brasil
-              </span>
-              <span className="flex items-center gap-2">
-                <span className="w-1.5 h-1.5 bg-gold rounded-full" aria-hidden="true" />
-                Suporte para medidas de urgência e execuções
-              </span>
-            </div>
-
-            {/* Prova social Google */}
-            <div className="mt-10 inline-flex items-center gap-4 border-t hairline pt-5">
+            <div
+              id="hero-proof"
+              className="mt-7 sm:mt-8 inline-flex items-center gap-3 border-t hairline pt-4"
+            >
               <div className="flex gap-[3px]" aria-hidden="true">
                 {[...Array(5)].map((_, i) => (
                   <Star key={i} className="w-3.5 h-3.5 text-gold fill-current" />
                 ))}
               </div>
-              <p className="text-xs text-muted">
-                <span className="text-ivory font-medium">5,0 no Google</span> &mdash; 37 avaliações públicas
-              </p>
+              <a
+                href="#avaliacoes"
+                className="text-xs text-muted font-light hover:text-ivory transition-colors"
+              >
+                <span className="text-ivory font-normal">5,0 no Google</span> — 37 avaliações
+                públicas verificadas
+              </a>
             </div>
           </div>
 
-          {/* Right Column: Hero Image with next/image */}
-          <div className="lg:col-span-5 relative">
-            <figure className="img-zoom relative border hairline lg:mt-8 shadow-2xl">
-              <div className="relative w-full h-[420px] md:h-[540px]">
-                <Image
-                  src="/assets/escritorio.png"
-                  alt="Ambiente institucional do escritório Braga & Xavier Advogados em Montes Claros - MG"
-                  fill
-                  priority
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 40vw"
-                  className="object-cover"
-                />
-              </div>
-              <div
-                className="absolute inset-0 bg-gradient-to-t from-ink/80 via-transparent to-ink/20 pointer-events-none"
-                aria-hidden="true"
-              />
-              <figcaption className="absolute top-5 right-5 text-[0.6rem] tracking-[0.3em] uppercase text-ivory/70 bg-ink/60 px-2 py-1 backdrop-blur-sm border border-white/10">
-                Montes Claros &mdash; MG
-              </figcaption>
-            </figure>
-
-            <div className="glass absolute -bottom-6 left-2 lg:-left-8 max-w-[260px] p-5 shadow-xl">
-              <p className="text-[0.6rem] tracking-[0.3em] uppercase text-gold mb-1">
-                Atuação Nacional
-              </p>
-              <p className="text-xs text-ivory/85 leading-relaxed">
-                Consumidores, empresas e produtores rurais.
-              </p>
-            </div>
-
-            <span
-              className="v-label hidden lg:block absolute -right-10 top-20 select-none"
-              aria-hidden="true"
+          {/* Card Flutuante de Credencial / Selo Lateral em Desktop */}
+          <div className="hidden lg:flex lg:col-span-4 xl:col-span-5 justify-end">
+            <div
+              id="hero-floating-badge"
+              className="glass p-5 border border-white/15 max-w-[280px] bg-ink/85 backdrop-blur-xl shadow-2xl relative"
             >
-              Braga &amp; Xavier — Advogados
-            </span>
+              <div className="w-8 h-0.5 bg-gold mb-3" />
+              <p className="text-[.6rem] tracking-[.25em] uppercase text-gold font-medium mb-1">
+                Atendimento Direto
+              </p>
+              <p className="text-xs text-ivory leading-relaxed font-light">
+                Análise direta pelos sócios fundadores com absoluto rigor técnico e sigilo.
+              </p>
+              <div className="mt-4 pt-3 border-t hairline flex items-center justify-between text-[.58rem] text-champagne/80 font-normal uppercase tracking-wider">
+                <span>OAB/MG</span>
+                <span>Atuação Brasil</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </section>
   )
 }
+

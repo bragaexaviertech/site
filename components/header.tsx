@@ -1,178 +1,201 @@
 'use client'
 
 import React, { useState, useEffect } from 'react'
+import Image from 'next/image'
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import { ArrowUpRight, Menu, X } from 'lucide-react'
 
 interface HeaderProps {
-  onOpenTriage: () => void
+  onOpenTriagem: (origin: string) => void
 }
 
-export function Header({ onOpenTriage }: HeaderProps) {
-  const [isScrolled, setIsScrolled] = useState(false)
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+export function Header({ onOpenTriagem }: HeaderProps) {
+  const pathname = usePathname()
+  const [scrolled, setScrolled] = useState(false)
+  const [hidden, setHidden] = useState(false)
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   useEffect(() => {
+    let lastScrollY = window.scrollY
+
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 40)
+      const currentScroll = window.scrollY
+      setScrolled(currentScroll > 25)
+
+      if (currentScroll > 200 && currentScroll > lastScrollY) {
+        setHidden(true)
+      } else {
+        setHidden(false)
+      }
+      lastScrollY = currentScroll
     }
+
     window.addEventListener('scroll', handleScroll, { passive: true })
     handleScroll()
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape' && isMobileMenuOpen) {
-        setIsMobileMenuOpen(false)
-      }
-    }
-    window.addEventListener('keydown', handleKeyDown)
-    return () => window.removeEventListener('keydown', handleKeyDown)
-  }, [isMobileMenuOpen])
+  const navLinks = [
+    { href: '/', label: 'Início' },
+    { href: '/agronegocio', label: 'Agronegócio' },
+    { href: '/direito-bancario', label: 'Direito Bancário' },
+    { href: '/escritorio', label: 'O Escritório' },
+    { href: '/contato', label: 'Contato' },
+  ]
 
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-400 ${
-          isScrolled
-            ? 'bg-ink/90 backdrop-blur-xl border-b border-white/10 shadow-lg'
-            : 'bg-transparent border-b border-transparent'
-        }`}
+        id="site-header"
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+          scrolled
+            ? 'bg-[#0A0A0C]/90 backdrop-blur-xl border-b border-white/[0.07]'
+            : 'border-b border-transparent'
+        } ${hidden ? '-translate-y-full' : 'translate-y-0'}`}
       >
-        <div className="max-w-[1440px] mx-auto px-5 md:px-[6vw] flex items-center justify-between h-20">
-          <a
-            href="#inicio"
-            className="flex flex-col leading-none group"
+        <div className="max-w-[1440px] mx-auto px-4 sm:px-6 md:px-[5vw] flex items-center justify-between h-14 md:h-16">
+          {/* Logo Oficial */}
+          <Link
+            href="/"
+            className="flex items-center gap-2 sm:gap-2.5 group"
             aria-label="Braga & Xavier Advogados — início"
           >
-            <span className="font-serif text-xl md:text-2xl tracking-wide text-ivory group-hover:text-gold transition-colors">
-              BRAGA <span className="text-gold">&amp;</span> XAVIER
-            </span>
-            <span className="text-[0.6rem] tracking-[0.45em] text-muted mt-1">ADVOGADOS</span>
-          </a>
+            <Image
+              src="/logo-BX.png"
+              alt="Logo Braga & Xavier Advogados"
+              width={48}
+              height={48}
+              className="h-8 sm:h-9 md:h-10 w-auto object-contain group-hover:brightness-110 transition-all"
+              priority
+            />
+            <div className="flex flex-col leading-none border-l hairline pl-2 sm:pl-2.5">
+              <span className="font-normal text-[0.75rem] sm:text-xs md:text-sm tracking-wider text-ivory uppercase">
+                BRAGA <span className="text-gold">&amp;</span> XAVIER
+              </span>
+              <span className="text-[0.44rem] sm:text-[0.48rem] tracking-[0.25em] text-muted uppercase mt-0.5 font-light">
+                ADVOGADOS
+              </span>
+            </div>
+          </Link>
 
-          <nav className="hidden lg:flex items-center gap-8" aria-label="Navegação principal">
-            <a
-              href="#escritorio"
-              className="link-underline text-xs tracking-[0.14em] uppercase text-muted hover:text-ivory transition-colors"
-            >
-              Escritório
-            </a>
-            <a
-              href="#bancario"
-              className="link-underline text-xs tracking-[0.14em] uppercase text-muted hover:text-ivory transition-colors"
-            >
-              Direito Bancário
-            </a>
-            <a
-              href="#empresas"
-              className="link-underline text-xs tracking-[0.14em] uppercase text-muted hover:text-ivory transition-colors"
-            >
-              Empresas
-            </a>
-            <a
-              href="#agronegocio"
-              className="link-underline text-xs tracking-[0.14em] uppercase text-muted hover:text-ivory transition-colors"
-            >
-              Agronegócio
-            </a>
-            <a
-              href="#avaliacoes"
-              className="link-underline text-xs tracking-[0.14em] uppercase text-muted hover:text-ivory transition-colors"
-            >
-              Avaliações
-            </a>
-            <a
-              href="#contato"
-              className="link-underline text-xs tracking-[0.14em] uppercase text-muted hover:text-ivory transition-colors"
-            >
-              Contato
-            </a>
+          {/* Links Desktop Centralizados com Respiro */}
+          <nav className="hidden lg:flex items-center gap-6 xl:gap-8" aria-label="Navegação principal">
+            {navLinks.map((link) => {
+              const isActive = pathname === link.href
+              return (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className={`link-underline text-[.72rem] tracking-[.14em] uppercase font-light transition-colors py-1 ${
+                    isActive
+                      ? 'text-ivory font-normal active text-gold'
+                      : 'text-muted hover:text-ivory'
+                  }`}
+                >
+                  {link.label}
+                </Link>
+              )
+            })}
           </nav>
 
-          <div className="flex items-center gap-4">
+          {/* CTA Header & Hamburger */}
+          <div className="flex items-center gap-2 sm:gap-2.5">
             <button
-              onClick={onOpenTriage}
-              className="hidden md:inline-flex btn-primary !py-3 !px-5"
+              onClick={() => onOpenTriagem('header')}
+              className="!hidden lg:!inline-flex btn-primary !py-2 !px-4 !text-[.68rem] cursor-pointer"
             >
-              Falar com um advogado
-              <ArrowUpRight className="w-4 h-4" />
+              <span>Falar com um advogado</span>
+              <ArrowUpRight className="w-3.5 h-3.5" />
             </button>
+
             <button
-              onClick={() => setIsMobileMenuOpen(true)}
-              className="lg:hidden p-2 text-ivory hover:text-gold transition-colors"
+              onClick={() => setMobileMenuOpen(true)}
+              className="lg:!hidden flex items-center justify-center p-2 rounded border border-white/10 bg-white/[0.03] text-ivory hover:text-gold hover:border-gold/30 transition-colors cursor-pointer"
               aria-label="Abrir menu de navegação"
-              aria-expanded={isMobileMenuOpen}
+              aria-expanded={mobileMenuOpen}
             >
-              <Menu className="w-6 h-6" />
+              <Menu className="w-5 h-5" />
             </button>
           </div>
         </div>
       </header>
 
-      {/* Mobile Menu Overlay */}
-      {isMobileMenuOpen && (
-        <div
-          className="fixed inset-0 z-[60] bg-ink/98 backdrop-blur-2xl lg:hidden flex flex-col justify-between p-6 animate-in fade-in duration-300"
-          role="dialog"
-          aria-modal="true"
-          aria-label="Menu Mobile"
-        >
-          <div>
-            <div className="flex items-center justify-between h-14 border-b hairline">
-              <div className="flex flex-col leading-none">
-                <span className="font-serif text-xl tracking-wide text-ivory">
+      {/* Mobile Menu Drawer */}
+      <div
+        className={`fixed inset-0 z-[60] bg-[#0A0A0C]/98 backdrop-blur-2xl lg:hidden flex flex-col justify-between p-5 sm:p-6 transition-all duration-300 ${
+          mobileMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible pointer-events-none'
+        }`}
+        role="dialog"
+        aria-modal="true"
+        aria-label="Menu Mobile"
+      >
+        <div>
+          <div className="flex items-center justify-between h-14 border-b hairline">
+            <Link
+              href="/"
+              onClick={() => setMobileMenuOpen(false)}
+              className="flex items-center gap-2.5"
+            >
+              <Image
+                src="/logo-BX.png"
+                alt="Logo Braga & Xavier"
+                width={36}
+                height={36}
+                className="h-8 sm:h-9 w-auto object-contain"
+              />
+              <div className="flex flex-col leading-none border-l hairline pl-2.5">
+                <span className="font-normal text-xs tracking-wider uppercase">
                   BRAGA <span className="text-gold">&amp;</span> XAVIER
                 </span>
-                <span className="text-[0.55rem] tracking-[0.4em] text-muted mt-1">ADVOGADOS</span>
+                <span className="text-[0.45rem] tracking-[0.25em] text-muted uppercase mt-0.5">
+                  ADVOGADOS
+                </span>
               </div>
-              <button
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="p-2 text-ivory hover:text-gold transition-colors"
-                aria-label="Fechar menu"
-              >
-                <X className="w-6 h-6" />
-              </button>
-            </div>
-
-            <nav className="flex flex-col gap-2 pt-8" aria-label="Navegação móvel">
-              {[
-                { href: '#escritorio', label: 'O Escritório' },
-                { href: '#bancario', label: 'Direito Bancário' },
-                { href: '#empresas', label: 'Dívidas Empresariais' },
-                { href: '#agronegocio', label: 'Direito Rural & Agro' },
-                { href: '#avaliacoes', label: 'Avaliações' },
-                { href: '#contato', label: 'Localização & Contato' },
-              ].map((item) => (
-                <a
-                  key={item.href}
-                  href={item.href}
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className="font-serif text-2xl py-3 border-b hairline text-ivory hover:text-gold transition-colors"
-                >
-                  {item.label}
-                </a>
-              ))}
-            </nav>
-          </div>
-
-          <div className="pt-6 border-t hairline flex flex-col gap-3">
+            </Link>
             <button
-              onClick={() => {
-                setIsMobileMenuOpen(false)
-                onOpenTriage()
-              }}
-              className="btn-primary justify-center w-full !py-4"
+              onClick={() => setMobileMenuOpen(false)}
+              className="p-2 text-ivory hover:text-gold rounded border border-white/10"
+              aria-label="Fechar menu"
             >
-              Falar com um advogado
-              <ArrowUpRight className="w-4 h-4" />
+              <X className="w-4 h-4" />
             </button>
-            <p className="text-center text-xs text-muted">
-              Atendimento em Montes Claros e todo o Brasil
-            </p>
           </div>
+
+          <nav className="flex flex-col gap-1 pt-5" aria-label="Navegação móvel">
+            {navLinks.map((link) => {
+              const isActive = pathname === link.href
+              return (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  onClick={() => setMobileMenuOpen(false)}
+                  className={`font-light text-base py-3 border-b hairline transition-colors flex items-center justify-between ${
+                    isActive ? 'text-gold font-normal' : 'text-ivory hover:text-gold'
+                  }`}
+                >
+                  <span>{link.label}</span>
+                  <span className="text-xs text-muted/50">&rarr;</span>
+                </Link>
+              )
+            })}
+          </nav>
         </div>
-      )}
+
+        <div className="pt-4 border-t hairline">
+          <button
+            onClick={() => {
+              setMobileMenuOpen(false)
+              onOpenTriagem('mobile-menu')
+            }}
+            className="btn-primary justify-center w-full !py-2.5 !text-xs cursor-pointer"
+          >
+            <span>Falar com um advogado</span>
+            <ArrowUpRight className="w-3.5 h-3.5" />
+          </button>
+        </div>
+      </div>
     </>
   )
 }
+
