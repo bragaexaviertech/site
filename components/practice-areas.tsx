@@ -80,19 +80,18 @@ export function PracticeAreas({ onOpenTriagem }: PracticeAreasProps) {
                 </span>
               </div>
               <h3 className="text-lg sm:text-xl md:text-2xl font-normal mt-5 text-ivory group-hover:text-gold transition-colors">
-                Direito Bancário
+                Direito Bancário &amp; Cobranças
               </h3>
               <p className="mt-2 text-ivory/70 leading-relaxed max-w-[48ch] text-xs sm:text-sm font-light">
-                Atuação combativa em conflitos, contratos, cobranças, defesas em execuções de
-                títulos e negociações com instituições financeiras.
+                Defesa ágil contra execuções de títulos, bloqueios judiciais e juros abusivos em contratos de crédito.
               </p>
             </div>
 
             <ul className="relative z-10 mt-5 flex flex-wrap gap-x-4 gap-y-1.5 text-[.65rem] sm:text-[.7rem] tracking-[.08em] uppercase text-champagne/90 font-medium">
-              <li>• Revisão contratual</li>
-              <li>• Defesa em execução</li>
-              <li>• Renegociação com deságio</li>
-              <li>• Proteção de bem de família</li>
+              <li>• Defesa em Execuções</li>
+              <li>• Desbloqueio Sisbajud</li>
+              <li>• Revisão Contratual</li>
+              <li>• Bem de Família</li>
             </ul>
           </Link>
 
@@ -134,16 +133,15 @@ export function PracticeAreas({ onOpenTriagem }: PracticeAreasProps) {
                 </span>
               </div>
               <h3 className="text-lg sm:text-xl md:text-2xl font-normal mt-5 text-ivory group-hover:text-gold transition-colors">
-                Dívidas Empresariais
+                Dívidas Empresariais &amp; Caixa
               </h3>
               <p className="mt-2 text-ivory/70 leading-relaxed text-xs sm:text-sm font-light">
-                Análise e construção de alternativas jurídicas para empresas diante de endividamento
-                bancário (CCB, capital de giro, travas e garantias).
+                Reestruturação de passivos corporativos para liberar capital de giro e proteger o patrimônio dos sócios avalistas.
               </p>
             </div>
 
             <p className="relative z-10 text-[.62rem] sm:text-[.68rem] tracking-[.1em] uppercase text-champagne/90 mt-5 font-medium">
-              Reestruturação de passivos &bull; Proteção de caixa &rarr;
+              Proteção de caixa &bull; Acordos com deságio &rarr;
             </p>
           </Link>
 
@@ -185,16 +183,15 @@ export function PracticeAreas({ onOpenTriagem }: PracticeAreasProps) {
                 </span>
               </div>
               <h3 className="text-lg sm:text-xl md:text-2xl font-normal mt-5 text-ivory group-hover:text-gold transition-colors">
-                Agronegócio
+                Agronegócio &amp; Safra
               </h3>
               <p className="mt-2 text-ivory/70 leading-relaxed text-xs sm:text-sm font-light">
-                Estratégia jurídica aplicada às relações de crédito, CPRs, garantias e preservação
-                das atividades do produtor rural e cooperativas.
+                Aplicação da Súmula 298 do STJ para prorrogar dívidas de safra e resguardar terras e maquinários do produtor.
               </p>
             </div>
 
             <p className="relative z-10 text-[.62rem] sm:text-[.68rem] tracking-[.1em] uppercase text-champagne/90 mt-5 font-medium">
-              Assessoria no campo &bull; Súmula 298 STJ &rarr;
+              Alongamento rural &bull; Súmula 298 STJ &rarr;
             </p>
           </Link>
 
@@ -236,18 +233,17 @@ export function PracticeAreas({ onOpenTriagem }: PracticeAreasProps) {
                 </span>
               </div>
               <h3 className="text-lg sm:text-xl md:text-2xl font-normal mt-5 text-ivory group-hover:text-gold transition-colors">
-                Direito Rural &amp; Crédito
+                Auditoria de CPR &amp; Garantias
               </h3>
               <p className="mt-2 text-ivory/70 leading-relaxed max-w-[48ch] text-xs sm:text-sm font-light">
-                Assessoria especializada em operações financeiras e endividamentos rurais, com ênfase
-                no direito subjetivo de alongamento de dívidas de safra.
+                Perícia em Cédulas de Produto Rural e impugnação imediata de leilões, penhoras e arrestos indevidos de grãos.
               </p>
             </div>
 
             <ul className="relative z-10 mt-5 flex flex-wrap gap-x-4 gap-y-1.5 text-[.65rem] sm:text-[.7rem] tracking-[.08em] uppercase text-champagne/90 font-medium">
-              <li>• Alongamento de dívida rural (Súmula 298 STJ)</li>
-              <li>• Revisão de crédito rural</li>
-              <li>• Impenhorabilidade da pequena propriedade</li>
+              <li>• Alongamento de Dívida (STJ)</li>
+              <li>• Auditoria de CPR e CCR</li>
+              <li>• Proteção de Terras e Tratores</li>
             </ul>
           </Link>
         </div>
@@ -261,13 +257,13 @@ export function PracticeAreas({ onOpenTriagem }: PracticeAreasProps) {
               </div>
               <div>
                 <p className="text-[.6rem] tracking-[.25em] uppercase text-gold font-medium mb-1">
-                  ATENÇÃO A PRAZOS PROCESSUAIS BANCÁRIOS
+                  ATENÇÃO AOS PRAZOS PROCESSUAIS
                 </p>
                 <h3 className="text-base sm:text-lg font-normal text-ivory tracking-tight">
-                  Recebeu citação, intimação judicial ou bloqueio em conta?
+                  Recebeu notificação judicial, citação ou bloqueio em conta?
                 </h3>
                 <p className="text-xs sm:text-sm text-ivory/80 mt-1 max-w-2xl font-light leading-relaxed">
-                  Os prazos legais para Embargos à Execução e defesas contra constrições patrimoniais são peremptórios (geralmente de 15 dias). Uma atuação técnica imediata impede penhoras irreversíveis de bens, maquinários e faturamento.
+                  Você tem apenas <strong className="text-ivory font-medium">15 dias úteis</strong> para apresentar defesa em execuções bancárias. Uma atuação técnica rápida impede penhoras irreversíveis de faturamento, maquinários e imóveis.
                 </p>
               </div>
             </div>
@@ -276,7 +272,7 @@ export function PracticeAreas({ onOpenTriagem }: PracticeAreasProps) {
               onClick={() => onOpenTriagem('urgencia_prazos')}
               className="btn-primary !py-3 !px-6 !text-xs shrink-0 cursor-pointer justify-center shadow-xl"
             >
-              <span>Avaliar Meu Prazo Agora</span>
+              <span>Avaliar Meu Prazo no WhatsApp</span>
               <ArrowUpRight className="w-3.5 h-3.5" />
             </button>
           </div>

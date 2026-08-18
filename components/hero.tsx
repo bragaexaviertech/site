@@ -19,55 +19,90 @@ export function Hero({ onOpenTriagem }: HeroProps) {
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
     if (reducedMotion) return
 
-    const ctx = gsap.context(() => {
-      const tl = gsap.timeline()
+    const runHeroAnimation = () => {
+      const ctx = gsap.context(() => {
+        const tl = gsap.timeline()
 
-      if (bgMediaRef.current) {
+        if (bgMediaRef.current) {
+          tl.fromTo(
+            bgMediaRef.current,
+            { opacity: 0, scale: 1.05 },
+            { opacity: 1, scale: 1, duration: 1.1, ease: 'power2.out' },
+            0
+          )
+        }
+
+        if (headlineRef.current) {
+          const lines = headlineRef.current.querySelectorAll('.reveal-line > span')
+          tl.fromTo(
+            lines,
+            { yPercent: 115, opacity: 0 },
+            { yPercent: 0, opacity: 1, duration: 0.9, stagger: 0.09, ease: 'power4.out' },
+            0.05
+          )
+        }
+
         tl.fromTo(
-          bgMediaRef.current,
-          { opacity: 0 },
-          { opacity: 1, duration: 0.8, ease: 'power2.out' },
-          0
+          '#hero-desc',
+          { opacity: 0, y: 18 },
+          { opacity: 1, y: 0, duration: 0.65, ease: 'power3.out' },
+          0.3
         )
-      }
-
-      if (headlineRef.current) {
-        const lines = headlineRef.current.querySelectorAll('.reveal-line > span')
         tl.fromTo(
-          lines,
-          { yPercent: 110, opacity: 0 },
-          { yPercent: 0, opacity: 1, duration: 0.85, stagger: 0.08, ease: 'power4.out' },
-          0.15
+          '#hero-cta',
+          { opacity: 0, y: 18 },
+          { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out' },
+          0.42
         )
+        tl.fromTo(
+          '#hero-proof',
+          { opacity: 0, y: 12 },
+          { opacity: 1, y: 0, duration: 0.55, ease: 'power3.out' },
+          0.52
+        )
+        tl.fromTo(
+          '#hero-floating-badge',
+          { opacity: 0, y: 24, scale: 0.96 },
+          {
+            opacity: 1,
+            y: 0,
+            scale: 1,
+            duration: 0.75,
+            ease: 'power3.out',
+            onComplete: () => {
+              // Movimento flutuante sutil e contínuo
+              gsap.to('#hero-floating-badge', {
+                y: -6,
+                duration: 3.2,
+                repeat: -1,
+                yoyo: true,
+                ease: 'sine.inOut',
+              })
+            },
+          },
+          0.58
+        )
+      }, sectionRef)
+
+      return ctx
+    }
+
+    let ctx: gsap.Context | undefined
+
+    if (typeof window !== 'undefined' && window.__BX_PRELOADER_DONE__) {
+      ctx = runHeroAnimation()
+    } else {
+      const handler = () => {
+        ctx = runHeroAnimation()
       }
+      window.addEventListener('bx:preloader-done', handler, { once: true })
+      return () => {
+        window.removeEventListener('bx:preloader-done', handler)
+        ctx?.revert()
+      }
+    }
 
-      tl.fromTo(
-        '#hero-desc',
-        { opacity: 0, y: 15 },
-        { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out' },
-        0.35
-      )
-      tl.fromTo(
-        '#hero-cta',
-        { opacity: 0, y: 15 },
-        { opacity: 1, y: 0, duration: 0.5, ease: 'power3.out' },
-        0.45
-      )
-      tl.fromTo(
-        '#hero-proof',
-        { opacity: 0, y: 10 },
-        { opacity: 1, y: 0, duration: 0.5, ease: 'power3.out' },
-        0.55
-      )
-      tl.fromTo(
-        '#hero-floating-badge',
-        { opacity: 0, y: 20 },
-        { opacity: 1, y: 0, duration: 0.7, ease: 'power3.out' },
-        0.65
-      )
-    }, sectionRef)
-
-    return () => ctx.revert()
+    return () => ctx?.revert()
   }, [])
 
   return (
@@ -106,7 +141,7 @@ export function Hero({ onOpenTriagem }: HeroProps) {
         <div className="absolute inset-0 topo-lines opacity-20 mix-blend-overlay" />
 
         {/* Glow Dourado Ambiental sutil */}
-        <div className="absolute -top-24 right-1/4 w-96 h-96 bg-gold/10 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute -top-24 right-1/4 w-96 h-96 bg-gold/10 rounded-full blur-3xl pointer-events-none ambient-glow" />
       </div>
 
       <div className="max-w-[1440px] mx-auto w-full px-4 sm:px-6 md:px-[5vw] relative z-10">
@@ -139,8 +174,7 @@ export function Hero({ onOpenTriagem }: HeroProps) {
               id="hero-desc"
               className="mt-5 max-w-[50ch] text-ivory/85 leading-relaxed text-sm sm:text-base font-light drop-shadow"
             >
-              Atuação combativa em conflitos bancários, reestruturação de passivos empresariais e
-              demandas estratégicas do produtor rural em todo o território nacional.
+              Defesa combativa contra cobranças bancárias abusivas, execuções de dívidas e bloqueios patrimoniais — para empresas e produtores rurais em todo o Brasil.
             </p>
 
             <div id="hero-cta" className="mt-7 sm:mt-8 flex flex-col sm:flex-row gap-3">
@@ -172,8 +206,7 @@ export function Hero({ onOpenTriagem }: HeroProps) {
                 href="#avaliacoes"
                 className="text-xs text-muted font-light hover:text-ivory transition-colors"
               >
-                <span className="text-ivory font-normal">5,0 no Google</span> — 37 avaliações
-                públicas verificadas
+                <span className="text-ivory font-normal">5,0 no Google</span> — 37 avaliações públicas verificadas
               </a>
             </div>
           </div>
@@ -189,7 +222,7 @@ export function Hero({ onOpenTriagem }: HeroProps) {
                 Atendimento Direto
               </p>
               <p className="text-xs text-ivory leading-relaxed font-light">
-                Análise direta pelos sócios fundadores com absoluto rigor técnico e sigilo.
+                Análise direta pelos sócios fundadores. Rigor técnico, independência e sigilo absoluto.
               </p>
               <div className="mt-4 pt-3 border-t hairline flex items-center justify-between text-[.58rem] text-champagne/80 font-normal uppercase tracking-wider">
                 <span>OAB/MG</span>

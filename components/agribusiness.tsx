@@ -48,12 +48,10 @@ export function Agribusiness({ onOpenTriagem }: AgribusinessProps) {
               <Sprout className="w-3.5 h-3.5 text-gold" /> DIREITO RURAL &bull; CRÉDITO &amp; SAFRA
             </p>
             <h2 className="font-light text-2xl sm:text-3xl lg:text-4xl leading-[1.12] text-balance text-ivory tracking-tight">
-              Crédito rural também exige estratégia jurídica.
+              Alongar a dívida rural é direito do produtor, não favor do banco.
             </h2>
             <p className="mt-3.5 text-ivory/80 leading-relaxed text-xs sm:text-sm max-w-[52ch] font-light">
-              A legislação agrária e o Manual de Crédito Rural conferem ao produtor rural o direito
-              subjetivo ao alongamento de suas dívidas bancárias em casos de frustração de safra,
-              intempéries climáticas ou oscilações graves de mercado.
+              Em caso de frustração de safra, seca ou oscilação de mercado, a Súmula 298 do STJ e o Manual de Crédito Rural asseguram a prorrogação do vencimento para manter a terra e a produção protegidas.
             </p>
             <div className="mt-5 pt-3 border-t hairline flex items-center justify-between text-[.58rem] tracking-[.18em] uppercase text-champagne font-medium">
               <span>SÚMULA 298 STJ</span>
@@ -89,7 +87,7 @@ export function Agribusiness({ onOpenTriagem }: AgribusinessProps) {
                 </p>
               </div>
               <p className="text-xs text-ivory/85 leading-relaxed font-light">
-                Prorrogação de vencimento com base no MCR e Súmula 298 do STJ em caso de quebra de safra.
+                Prorrogação compulsória de prazos com base no MCR e Súmula 298 do STJ.
               </p>
             </div>
 
@@ -97,11 +95,11 @@ export function Agribusiness({ onOpenTriagem }: AgribusinessProps) {
               <div className="flex items-center gap-2 mb-1.5">
                 <Landmark className="w-3.5 h-3.5 text-gold" />
                 <p className="text-[.6rem] tracking-[.2em] uppercase text-gold font-medium">
-                  Revisão de Crédito
+                  Auditoria de Cédulas
                 </p>
               </div>
               <p className="text-xs text-ivory/85 leading-relaxed font-light">
-                Auditoria de juros, taxas e impugnação de encargos indevidos em cédulas CPR e CCR.
+                Expurgo de juros abusivos e vendas casadas em CPRs e contratos de custeio.
               </p>
             </div>
 
@@ -109,11 +107,11 @@ export function Agribusiness({ onOpenTriagem }: AgribusinessProps) {
               <div className="flex items-center gap-2 mb-1.5">
                 <Scale className="w-3.5 h-3.5 text-gold" />
                 <p className="text-[.6rem] tracking-[.2em] uppercase text-gold font-medium">
-                  Defesa Patrimonial
+                  Defesa da Terra
                 </p>
               </div>
               <p className="text-xs text-ivory/85 leading-relaxed font-light">
-                Blindagem contra penhora indevida de safras, terras produtivas, silos e maquinários.
+                Impenhorabilidade da propriedade rural, safras, silos e maquinários.
               </p>
             </div>
 
@@ -121,11 +119,11 @@ export function Agribusiness({ onOpenTriagem }: AgribusinessProps) {
               <div className="flex items-center gap-2 mb-1.5">
                 <Sprout className="w-3.5 h-3.5 text-gold" />
                 <p className="text-[.6rem] tracking-[.2em] uppercase text-gold font-medium">
-                  Assessoria no Campo
+                  Assessoria Contínua
                 </p>
               </div>
               <p className="text-xs text-ivory/85 leading-relaxed font-light">
-                Acompanhamento preventivo e contencioso contínuo para produtores e cooperativas.
+                Suporte jurídico preventivo e contencioso para produtores e cooperativas.
               </p>
             </div>
           </div>

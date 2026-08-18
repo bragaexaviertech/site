@@ -4,15 +4,23 @@ import React, { useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
 import gsap from 'gsap'
 
+declare global {
+  interface Window {
+    __BX_PRELOADER_DONE__?: boolean
+  }
+}
+
 export function Preloader() {
   const [isVisible, setIsVisible] = useState(true)
   const overlayRef = useRef<HTMLDivElement>(null)
   const brandContainerRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    // Se o usuário prefere movimento reduzido, desativa imediatamente
+    // Se o usuário prefere movimento reduzido ou o preloader já rodou na sessão
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
-    if (prefersReducedMotion) {
+    if (prefersReducedMotion || window.__BX_PRELOADER_DONE__) {
+      window.__BX_PRELOADER_DONE__ = true
+      window.dispatchEvent(new CustomEvent('bx:preloader-done'))
       setIsVisible(false)
       return
     }
@@ -24,21 +32,21 @@ export function Preloader() {
         },
       })
 
-      // 1. A marca completa (Logo + Nome Oficial) surge unificada, suave e sem quebras
+      // 1. A marca completa (Logo + Nome Oficial) surge unificada e elegante
       tl.fromTo(
         brandContainerRef.current,
-        { opacity: 0, scale: 0.94, y: 12 },
-        { opacity: 1, scale: 1, y: 0, duration: 0.7, ease: 'power3.out' }
+        { opacity: 0, scale: 0.94, y: 10 },
+        { opacity: 1, scale: 1, y: 0, duration: 0.55, ease: 'power3.out' }
       )
 
-      // 2. Tempo de leitura e presença da marca (500ms)
-      tl.to({}, { duration: 0.5 })
+      // 2. Tempo de leitura e presença da marca (350ms)
+      tl.to({}, { duration: 0.35 })
 
       // 3. Fade out sutil da marca
       tl.to(brandContainerRef.current, {
         opacity: 0,
-        y: -12,
-        duration: 0.35,
+        y: -10,
+        duration: 0.28,
         ease: 'power2.in',
       })
 
@@ -47,10 +55,15 @@ export function Preloader() {
         overlayRef.current,
         {
           yPercent: -100,
-          duration: 0.6,
+          duration: 0.55,
           ease: 'power3.inOut',
+          onStart: () => {
+            // Notifica o Hero e ScrollReveal exatamente no início da abertura da cortina
+            window.__BX_PRELOADER_DONE__ = true
+            window.dispatchEvent(new CustomEvent('bx:preloader-done'))
+          },
         },
-        '-=0.1'
+        '-=0.05'
       )
     })
 

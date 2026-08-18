@@ -221,6 +221,21 @@ b, strong {
   );
 }
 
+/* Ambient Glow Pulse */
+@keyframes ambientGlowPulse {
+  0%, 100% {
+    opacity: 0.12;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.22;
+    transform: scale(1.08);
+  }
+}
+.ambient-glow {
+  animation: ambientGlowPulse 7s ease-in-out infinite;
+}
+
 /* Scroll Down Indicator */
 .scroll-indicator {
   position: absolute;

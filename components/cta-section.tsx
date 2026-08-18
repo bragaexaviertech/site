@@ -47,11 +47,10 @@ export function CTASection({ onOpenTriagem }: CTASectionProps) {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
           <div id="cta-text-col" className="reveal-on-scroll lg:col-span-8 xl:col-span-7">
             <h2 className="font-light text-2xl sm:text-3xl md:text-4xl lg:text-5xl leading-[1.08] text-ivory text-balance tracking-tight">
-              Seu caso merece estratégia antes de qualquer decisão.
+              Seu patrimônio exige estratégia antes de qualquer decisão.
             </h2>
             <p className="mt-4 text-ivory/80 text-xs sm:text-sm md:text-base leading-relaxed max-w-[50ch] font-light">
-              Fale diretamente com os advogados especialistas do Braga &amp; Xavier e receba uma
-              análise preliminar e individualizada da sua situação.
+              Fale diretamente com os advogados fundadores e receba um diagnóstico jurídico individualizado para resguardar seus bens.
             </p>
 
             <div className="mt-7 flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5">
@@ -60,7 +59,7 @@ export function CTASection({ onOpenTriagem }: CTASectionProps) {
                 className="btn-primary justify-center shadow-2xl !py-3 !px-6 !text-xs cursor-pointer"
               >
                 <MessageCircle className="w-4 h-4 text-champagne" />
-                <span>Conversar pelo WhatsApp</span>
+                <span>Conversar no WhatsApp com os Sócios</span>
                 <ArrowUpRight className="w-3.5 h-3.5" />
               </button>
 

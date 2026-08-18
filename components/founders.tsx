@@ -46,13 +46,10 @@ export function Founders() {
               Advocacia combativa, técnica e personalizada.
             </h2>
             <p className="mt-4 text-ivory/80 leading-relaxed text-xs sm:text-sm font-light">
-              A banca <strong className="text-ivory font-normal">Braga &amp; Xavier Advogados</strong> consolida
-              anos de atuação especializada na defesa patrimonial de devedores e na contestação estratégica
-              de exigências bancárias abusivas.
+              A banca <strong className="text-ivory font-normal">Braga &amp; Xavier</strong> combina independência ética e combatividade técnica na defesa exclusiva de devedores.
             </p>
             <p className="mt-2.5 text-ivory/80 leading-relaxed text-xs sm:text-sm font-light">
-              O atendimento direto pelos sócios assegura que cada detalhe contratual e processual seja
-              avaliado com o mais alto rigor técnico, celeridade e discrição.
+              Aqui o seu caso não é terceirizado: a elaboração das teses, defesas de urgência e negociações com os bancos são conduzidas pessoalmente pelos fundadores.
             </p>
 
             <div className="mt-6 border-t hairline pt-4 flex flex-col gap-2.5 text-[.68rem] text-champagne font-medium uppercase tracking-wider">
@@ -70,8 +67,8 @@ export function Founders() {
                 Montes Claros — MG &bull; Atuação em todo o Brasil
               </span>
               <div className="mt-2 pt-2 border-t hairline flex items-center justify-between text-gold/90 text-[.6rem] tracking-[.18em] uppercase font-medium">
-                <span>OAB/MG</span>
-                <span>DEFESA PATRIMONIAL ESTRATÉGICA</span>
+                <span>100% DEFESA DO DEVEDOR</span>
+                <span>NÃO ATUAMOS PARA BANCOS</span>
               </div>
             </div>
           </div>

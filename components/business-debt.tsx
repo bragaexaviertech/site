@@ -85,14 +85,12 @@ export function BusinessDebt({ onOpenTriagem }: BusinessDebtProps) {
 
             {/* Título de Alto Impacto */}
             <h2 className="font-light text-2xl sm:text-3xl lg:text-4xl leading-[1.12] text-balance text-ivory tracking-tight">
-              Endividamento empresarial precisa ser tratado antes de comprometer a operação.
+              Proteja o caixa da sua empresa antes que a dívida trave a operação.
             </h2>
 
             {/* Descrição Estratégica */}
             <p className="mt-4 text-ivory/80 leading-relaxed text-xs sm:text-sm font-light">
-              O <strong className="text-ivory font-normal">Braga &amp; Xavier Advogados</strong> atua na auditoria,
-              revisão e renegociação estratégica de passivos bancários corporativos, construindo alternativas que
-              resguardam o fluxo de caixa, protegem os bens dos sócios avalistas e restabelecem a sustentabilidade financeira da empresa.
+              Auditamos e renegociamos passivos corporativos para derrubar travas bancárias abusivas, preservar o capital de giro e blindar o patrimônio pessoal dos sócios avalistas.
             </p>
 
             {/* Cards de Soluções Corporativas */}
@@ -105,7 +103,7 @@ export function BusinessDebt({ onOpenTriagem }: BusinessDebtProps) {
                   </p>
                 </div>
                 <p className="text-xs text-muted leading-relaxed font-light">
-                  Liberação de travas bancárias, suspensão de retenções automáticas de recebíveis e preservação de capital de giro.
+                  Liberação de travas, suspensão de retenções automáticas e defesa do capital de giro.
                 </p>
               </div>
 
@@ -113,11 +111,11 @@ export function BusinessDebt({ onOpenTriagem }: BusinessDebtProps) {
                 <div className="flex items-center gap-2 mb-1.5">
                   <ShieldCheck className="w-3.5 h-3.5 text-gold" />
                   <p className="text-[.62rem] uppercase tracking-wider text-champagne font-medium">
-                    Defesa Patrimonial
+                    Blindagem dos Sócios
                   </p>
                 </div>
                 <p className="text-xs text-muted leading-relaxed font-light">
-                  Blindagem do patrimônio pessoal dos sócios e avalistas contra penhoras e execuções de CCBs e garantias reais.
+                  Defesa do patrimônio particular dos avalistas contra execuções de CCBs e garantias reais.
                 </p>
               </div>
             </div>

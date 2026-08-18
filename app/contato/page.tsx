@@ -34,37 +34,56 @@ export default function ContatoPage() {
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
     if (reducedMotion) return
 
-    const ctx = gsap.context(() => {
-      const tl = gsap.timeline()
+    const runHeroAnimation = () => {
+      const ctx = gsap.context(() => {
+        const tl = gsap.timeline()
 
-      if (bgMediaRef.current) {
+        if (bgMediaRef.current) {
+          tl.fromTo(
+            bgMediaRef.current,
+            { opacity: 0, scale: 1.05 },
+            { opacity: 1, scale: 1, duration: 1.1, ease: 'power2.out' },
+            0
+          )
+        }
+
+        if (headlineRef.current) {
+          const lines = headlineRef.current.querySelectorAll('.reveal-line > span')
+          tl.fromTo(
+            lines,
+            { yPercent: 115, opacity: 0 },
+            { yPercent: 0, opacity: 1, duration: 0.9, stagger: 0.09, ease: 'power4.out' },
+            0.05
+          )
+        }
+
         tl.fromTo(
-          bgMediaRef.current,
-          { opacity: 0 },
-          { opacity: 1, duration: 0.8, ease: 'power2.out' },
-          0
+          '#hero-contato-desc',
+          { opacity: 0, y: 18 },
+          { opacity: 1, y: 0, duration: 0.65, ease: 'power3.out' },
+          0.3
         )
+      }, sectionRef)
+
+      return ctx
+    }
+
+    let ctx: gsap.Context | undefined
+
+    if (typeof window !== 'undefined' && window.__BX_PRELOADER_DONE__) {
+      ctx = runHeroAnimation()
+    } else {
+      const handler = () => {
+        ctx = runHeroAnimation()
       }
-
-      if (headlineRef.current) {
-        const lines = headlineRef.current.querySelectorAll('.reveal-line > span')
-        tl.fromTo(
-          lines,
-          { yPercent: 110, opacity: 0 },
-          { yPercent: 0, opacity: 1, duration: 0.85, stagger: 0.08, ease: 'power4.out' },
-          0.15
-        )
+      window.addEventListener('bx:preloader-done', handler, { once: true })
+      return () => {
+        window.removeEventListener('bx:preloader-done', handler)
+        ctx?.revert()
       }
+    }
 
-      tl.fromTo(
-        '#hero-contato-desc',
-        { opacity: 0, y: 15 },
-        { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out' },
-        0.35
-      )
-    }, sectionRef)
-
-    return () => ctx.revert()
+    return () => ctx?.revert()
   }, [])
 
   const handleOpenTriagem = (origin: string) => {

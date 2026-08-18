@@ -16,24 +16,24 @@ export function FAQ({ onOpenTriagem }: FAQProps) {
 
   const faqs = [
     {
-      q: 'Como funciona o direito de alongamento da dívida rural (Súmula 298 STJ)?',
-      a: 'O alongamento de dívidas originadas de crédito rural é um direito subjetivo do produtor rural assegurado pelo Manual de Crédito Rural (MCR) e pacificado pela Súmula 298 do Superior Tribunal de Justiça. Quando ocorrem perdas de safra, intempéries climáticas ou queda acentuada nos preços de mercado, o banco é obrigado a renegociar e estender o prazo, desde que os requisitos legais sejam preenchidos e formalizados adequadamente.',
+      q: 'Como funciona o alongamento da dívida rural pela Súmula 298 do STJ?',
+      a: 'O alongamento de crédito rural é um direito do produtor assegurado por lei, e não favor do banco. Em caso de quebra de safra, seca, excesso de chuvas ou queda acentuada de preços, o banco é obrigado a repactuar o débito com prazos compatíveis com a nova colheita.',
     },
     {
-      q: 'Recebi uma notificação de Execução de Título ou Penhora. O que fazer?',
-      a: 'Os prazos para apresentação de defesas como Embargos à Execução ou Exceção de Pré-Executividade são curtos e peremptórios. A análise imediata dos cálculos, das cláusulas do contrato e das garantias vinculadas permite impugnar juros abusivos, evitar bloqueios de contas bancárias e resguardar bens de família ou bens indispensáveis à atividade empresarial/rural.',
+      q: 'Recebi notificação de Execução ou Penhora. O que fazer?',
+      a: 'O prazo de defesa é de apenas 15 dias úteis. Nossa equipe ingressa imediatamente com medidas judiciais de urgência para impugnar juros abusivos, desbloquear contas e blindar terras, máquinas e bens de família.',
     },
     {
-      q: 'O escritório atende apenas em Montes Claros ou em outros estados?',
-      a: 'O escritório possui sede em Montes Claros – MG e infraestrutura operacional 100% digital para atuar em processos eletrônicos perante qualquer Tribunal de Justiça, Tribunal Regional Federal e instâncias superiores (STJ e STF) em todo o Brasil, garantindo acompanhamento próximo e reuniões por videoconferência com os próprios sócios.',
+      q: 'O escritório atende clientes fora de Montes Claros ou em outros estados?',
+      a: 'Sim. Temos sede física em Montes Claros – MG e atuamos de forma 100% digital em todos os Tribunais de Justiça, TRFs e instâncias superiores (STJ e STF) do Brasil, com reuniões por videoconferência com os próprios sócios fundadores.',
     },
     {
-      q: 'Como funciona o sigilo e a análise preliminar dos documentos?',
-      a: 'Todas as consultas e trocas de documentos são protegidas pelo sigilo profissional inerente à advocacia (Lei Federal nº 8.906/94) e pela LGPD. A análise preliminar visa verificar a viabilidade jurídica da demanda e desenhar cenários estratégicos antes de qualquer tomada de decisão.',
+      q: 'Como funciona o sigilo das informações e documentos?',
+      a: 'Seus dados e contratos são protegidos por sigilo profissional absoluto da advocacia (Lei nº 8.906/94) e pela LGPD. Nenhuma informação é compartilhada com terceiros.',
     },
     {
-      q: 'Quais documentos são necessários para a primeira análise jurídica?',
-      a: 'Para uma análise eficiente, recomenda-se disponibilizar: cópia do contrato ou cédula bancária (CCB, CPR, CCR), extratos da evolução do saldo devedor e, se houver processo judicial em andamento, a cópia da petição inicial e da citação/intimação recebida.',
+      q: 'Quais documentos preciso enviar para a análise preliminar?',
+      a: 'Basta enviar a cópia do contrato ou cédula bancária (CCB, CPR ou CCR), demonstrativo do saldo devedor e a notificação ou cópia do processo judicial, caso já exista.',
     },
   ]
 

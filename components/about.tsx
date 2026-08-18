@@ -41,19 +41,15 @@ export function About() {
               ADVOCACIA BOUTIQUE &bull; O ESCRITÓRIO
             </p>
             <h2 className="font-light text-2xl sm:text-3xl lg:text-4xl leading-[1.12] text-ivory text-balance mt-2 tracking-tight">
-              Problemas financeiros complexos exigem leitura jurídica estratégica.
+              Problemas financeiros complexos exigem estratégia jurídica sob medida.
             </h2>
             <p className="mt-4 text-ivory/80 leading-relaxed text-xs sm:text-sm font-light">
-              O <strong className="text-ivory font-normal">Braga &amp; Xavier Advogados</strong> atua em
-              situações críticas que envolvem bancos, contratos de crédito, cobranças, execuções e
-              reestruturação de endividamentos. Cada caso é examinado sob medida, considerando os
-              documentos, as garantias e as alternativas jurídicas aplicáveis — para pessoas físicas,
-              empresas e produtores rurais em todo o Brasil.
+              O <strong className="text-ivory font-normal">Braga &amp; Xavier Advogados</strong> atua em situações críticas contra bancos, execuções de títulos e renegociação de dívidas. Cada caso é examinado de forma artesanal pelos sócios fundadores, desenhando soluções que resguardam o patrimônio e a atividade de pessoas físicas, empresas e produtores rurais em todo o Brasil.
             </p>
 
             <blockquote className="mt-6 p-4 sm:p-5 bg-forest/30 border-l-2 border-gold/60">
               <p className="text-sm sm:text-base md:text-lg text-champagne font-serif italic leading-relaxed">
-                &ldquo;Cada operação financeira possui contexto, contrato, risco e estratégia próprios.&rdquo;
+                &ldquo;Quem enfrenta o sistema financeiro precisa de estratégia técnica antes de qualquer negociação.&rdquo;
               </p>
               <footer className="mt-2 text-[.58rem] tracking-[.2em] uppercase text-gold/80 font-normal">
                 Boutique Jurídica Braga &amp; Xavier
