@@ -19,11 +19,16 @@ const jakarta = Plus_Jakarta_Sans({
   display: 'swap',
 })
 
+const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL ||
+  (process.env.VERCEL_PROJECT_PRODUCTION_URL ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}` : null) ||
+  (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'https://bragaexavier.vercel.app')
+
 export const metadata: Metadata = {
   title: 'Braga & Xavier Advogados | Direito Bancário, Empresarial e Agronegócio',
   description:
     'Braga & Xavier Advogados — Advocacia estratégica especializada em proteção patrimonial, conflitos bancários, reestruturação de dívidas empresariais e agronegócio em todo o Brasil.',
-  metadataBase: new URL('https://bragaexavieradvogados.com.br'),
+  metadataBase: new URL(siteUrl),
   alternates: {
     canonical: '/',
   },
@@ -45,17 +50,19 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Braga & Xavier Advogados | Advocacia Estratégica',
     description:
-      'Estratégia jurídica para proteger patrimônio e reorganizar dívidas. Atuação em Direito Bancário, Empresarial e Agronegócio em todo o Brasil.',
-    url: 'https://bragaexavieradvogados.com.br',
+      'Defesa estratégica na proteção do patrimônio e reorganização de dívidas bancárias, empresariais e rurais. Atendimento direto pelos fundadores.',
+    url: siteUrl,
     siteName: 'Braga & Xavier Advogados',
     locale: 'pt_BR',
     type: 'website',
     images: [
       {
         url: '/og-image.jpg',
+        secureUrl: `${siteUrl}/og-image.jpg`,
         width: 1200,
         height: 630,
-        alt: 'Braga & Xavier Advogados',
+        type: 'image/jpeg',
+        alt: 'Braga & Xavier Advogados — Sócios Fundadores',
       },
     ],
   },
@@ -63,8 +70,8 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Braga & Xavier Advogados | Advocacia Estratégica',
     description:
-      'Estratégia jurídica para proteger patrimônio e reorganizar dívidas. Atuação em Direito Bancário, Empresarial e Agronegócio.',
-    images: ['/og-image.jpg'],
+      'Defesa estratégica na proteção do patrimônio e reorganização de dívidas bancárias, empresariais e rurais.',
+    images: [`${siteUrl}/og-image.jpg`],
   },
   icons: {
     icon: [
@@ -87,12 +94,12 @@ const jsonLd = {
   '@graph': [
     {
       '@type': 'LegalService',
-      '@id': 'https://bragaexavieradvogados.com.br/#organization',
+      '@id': `${siteUrl}/#organization`,
       name: 'Braga & Xavier Advogados',
       alternateName: 'Braga e Xavier Advocacia',
-      url: 'https://bragaexavieradvogados.com.br',
-      logo: 'https://bragaexavieradvogados.com.br/logo-BX.png',
-      image: 'https://bragaexavieradvogados.com.br/og-image.jpg',
+      url: siteUrl,
+      logo: `${siteUrl}/logo-BX.png`,
+      image: `${siteUrl}/og-image.jpg`,
       description:
         'Boutique jurídica especializada em Direito Bancário, Reestruturação de Dívidas Empresariais, Direito Rural e Agronegócio.',
       telephone: '+55-31-97174-6972',
