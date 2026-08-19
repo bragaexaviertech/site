@@ -22,11 +22,11 @@ export function Agribusiness({ onOpenTriagem }: AgribusinessProps) {
       >
         <div className="absolute right-0 top-0 bottom-0 w-full lg:w-[65%] h-full">
           <Image
-            src="/assets/agronegocio.png"
-            alt="Operações Rurais Braga & Xavier"
+            src="/assets/agronegocio.webp"
+            alt="Operações de Crédito Rural e Agronegócio"
             fill
-            sizes="(max-width: 1024px) 100vw, 65vw"
-            className="object-cover object-center opacity-25 lg:opacity-40 filter contrast-125 brightness-75"
+            sizes="(max-width: 1024px) 100vw, 70vw"
+            className="object-cover object-[center_30%] opacity-20 lg:opacity-35 filter contrast-125 brightness-75"
           />
         </div>
 

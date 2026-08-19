@@ -21,7 +21,7 @@ export function CTASection({ onOpenTriagem }: CTASectionProps) {
       >
         <div className="absolute right-0 top-0 bottom-0 w-full lg:w-[65%] h-full">
           <Image
-            src="/assets/equipe-editorial.jpg"
+            src="/assets/equipe-editorial.webp"
             alt="Dr. Braga e Dr. Xavier"
             fill
             sizes="100vw"

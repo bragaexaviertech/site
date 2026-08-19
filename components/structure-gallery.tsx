@@ -29,46 +29,40 @@ export function StructureGallery() {
             className="reveal-on-scroll md:col-span-7 relative overflow-hidden h-[250px] sm:h-[340px] w-full border border-white/10 hover:border-gold/40 transition-colors duration-500 group shadow-2xl"
           >
             <Image
-              src="/assets/recepcao.jpg"
-              alt="Recepção e lounge do escritório Braga & Xavier"
+              src="/assets/recepcao.webp"
+              alt="Recepção Oficial Braga & Xavier Advogados"
               fill
-              sizes="(max-width: 1024px) 100vw, 700px"
-              className="object-cover scale-100 group-hover:scale-105 transition-transform duration-700 ease-out"
+              sizes="(max-width: 1024px) 100vw, 55vw"
+              className="object-cover object-center filter contrast-110 brightness-90 group-hover:scale-105 transition-transform duration-700 ease-out"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-ink/85 via-ink/20 to-transparent" />
-            <div className="absolute bottom-3 left-3 px-3 py-1 bg-ink/80 backdrop-blur-md border border-white/10 text-[.62rem] uppercase tracking-widest text-ivory font-light">
-              Recepção &amp; Lounge Executivo
+            <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-transparent to-transparent" />
+            <div className="absolute bottom-4 left-4 right-4 text-xs tracking-wider uppercase text-champagne font-medium">
+              Recepção &bull; Atendimento Reservado
             </div>
           </div>
 
           <div className="md:col-span-5 flex flex-col gap-4 sm:gap-5 w-full">
-            <div
-              id="gallery-img-2"
-              className="reveal-on-scroll reveal-delay-1 relative overflow-hidden h-[150px] sm:h-[185px] w-full border border-white/10 hover:border-gold/40 transition-colors duration-500 group shadow-xl"
-            >
+            <div className="relative overflow-hidden h-[190px] sm:h-[210px] border border-white/10 shadow-xl group">
               <Image
-                src="/assets/sala-reuniao.jpg"
-                alt="Sala de reuniões para análises contratuais"
+                src="/assets/sala-reuniao.webp"
+                alt="Sala de Reuniões Estratégicas"
                 fill
-                sizes="(max-width: 1024px) 100vw, 500px"
-                className="object-cover scale-100 group-hover:scale-105 transition-transform duration-700 ease-out"
+                sizes="(max-width: 1024px) 50vw, 25vw"
+                className="object-cover object-center filter contrast-110 brightness-90 group-hover:scale-105 transition-transform duration-700 ease-out"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-ink/85 via-ink/20 to-transparent" />
-              <div className="absolute bottom-3 left-3 px-2.5 py-1 bg-ink/80 backdrop-blur-md border border-white/10 text-[.6rem] uppercase tracking-widest text-ivory font-light">
-                Sala de Reunião &amp; Estratégia
+              <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-transparent to-transparent" />
+              <div className="absolute bottom-3 left-3 right-3 text-[.65rem] tracking-wider uppercase text-champagne font-medium">
+                Sala de Reuniões
               </div>
             </div>
 
-            <div
-              id="gallery-img-3"
-              className="reveal-on-scroll reveal-delay-2 relative overflow-hidden h-[140px] sm:h-[165px] w-full border border-white/10 hover:border-gold/40 transition-colors duration-500 group shadow-xl"
-            >
+            <div className="relative overflow-hidden h-[190px] sm:h-[210px] border border-white/10 shadow-xl group">
               <Image
-                src="/assets/escritorio.jpg"
-                alt="Plano interno da banca jurídica"
+                src="/assets/escritorio.webp"
+                alt="Ambiente de Trabalho e Gestão"
                 fill
-                sizes="(max-width: 1024px) 100vw, 500px"
-                className="object-cover scale-100 group-hover:scale-105 transition-transform duration-700 ease-out"
+                sizes="(max-width: 1024px) 50vw, 25vw"
+                className="object-cover object-center filter contrast-110 brightness-90 group-hover:scale-105 transition-transform duration-700 ease-out"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-ink/85 via-ink/20 to-transparent" />
               <div className="absolute bottom-3 left-3 px-2.5 py-1 bg-ink/80 backdrop-blur-md border border-white/10 text-[.6rem] uppercase tracking-widest text-ivory font-light">

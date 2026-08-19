@@ -7,24 +7,24 @@ export function InstagramFeed() {
   const posts = [
     {
       id: 1,
-      title: 'Decisões Estratégicas',
-      category: 'Direito Bancário',
-      date: 'Análise Recente',
-      img: '/assets/escritorio.jpg',
+      tag: 'Direito Bancário',
+      title: 'Defesa em Execuções e Abusividades de CCB',
+      img: '/assets/escritorio.webp',
+      link: 'https://instagram.com/bragaexavier',
     },
     {
       id: 2,
-      title: 'Alongamento de Dívida Rural',
-      category: 'Crédito Rural',
-      date: 'Jurisprudência',
-      img: '/assets/agronegocio.png',
+      tag: 'Agronegócio',
+      title: 'Alongamento de Dívida de Safra — Súmula 298 STJ',
+      img: '/assets/agronegocio.webp',
+      link: 'https://instagram.com/bragaexavier',
     },
     {
       id: 3,
-      title: 'Reestruturação Empresarial',
-      category: 'Defesa de Caixa',
-      date: 'Artigo Técnico',
-      img: '/assets/sala-reuniao.jpg',
+      tag: 'Boutique Jurídica',
+      title: 'Atuação Direta pelos Sócios Fundadores',
+      img: '/assets/sala-reuniao.webp',
+      link: 'https://instagram.com/bragaexavier',
     },
   ]
 

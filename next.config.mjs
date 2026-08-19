@@ -1,7 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  compress: true,
   images: {
-    unoptimized: true,
+    formats: ['image/webp'],
+    minimumCacheTTL: 31536000,
   },
   turbopack: {
     root: process.cwd(),

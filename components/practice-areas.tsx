@@ -51,8 +51,8 @@ export function PracticeAreas({ onOpenTriagem }: PracticeAreasProps) {
             {/* Background Fotográfico Cinematográfico */}
             <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
               <Image
-                src="/assets/sala-reuniao.jpg"
-                alt="Ambiente de Direito Bancário"
+                src="/assets/sala-reuniao.webp"
+                alt="Ambiente Jurídico Bancário"
                 fill
                 sizes="(max-width: 768px) 100vw, 55vw"
                 className="object-cover opacity-15 group-hover:opacity-35 filter contrast-125 brightness-75 scale-100 group-hover:scale-105 transition-all duration-700 ease-out"
@@ -104,7 +104,7 @@ export function PracticeAreas({ onOpenTriagem }: PracticeAreasProps) {
             {/* Background Fotográfico Cinematográfico */}
             <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
               <Image
-                src="/assets/escritorio.jpg"
+                src="/assets/escritorio.webp"
                 alt="Ambiente de Gestão Empresarial"
                 fill
                 sizes="(max-width: 768px) 100vw, 45vw"
@@ -154,7 +154,7 @@ export function PracticeAreas({ onOpenTriagem }: PracticeAreasProps) {
             {/* Background Fotográfico Cinematográfico */}
             <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
               <Image
-                src="/assets/agronegocio.png"
+                src="/assets/agronegocio.webp"
                 alt="Crédito e Agronegócio"
                 fill
                 sizes="(max-width: 768px) 100vw, 45vw"
@@ -204,7 +204,7 @@ export function PracticeAreas({ onOpenTriagem }: PracticeAreasProps) {
             {/* Background Fotográfico Cinematográfico */}
             <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
               <Image
-                src="/assets/agronegocio.png"
+                src="/assets/agronegocio.webp"
                 alt="Direito Rural e Safra"
                 fill
                 sizes="(max-width: 768px) 100vw, 55vw"

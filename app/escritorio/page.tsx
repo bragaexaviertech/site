@@ -141,12 +141,12 @@ export default function EscritorioPage() {
             {/* Imagem de Fundo Completa sem cortes */}
             <div className="absolute inset-0 w-full h-full pointer-events-none overflow-hidden">
               <Image
-                src="/assets/escritorio.jpg"
+                src="/assets/escritorio.webp"
                 alt="Sede Oficial Braga & Xavier Advogados"
                 fill
                 priority
                 sizes="100vw"
-                className="object-cover object-[center_35%] opacity-45 filter contrast-[1.05] brightness-[0.92]"
+                className="object-cover object-[center_35%] opacity-90 filter contrast-[1.03] brightness-[0.96]"
               />
               {/* Degradê Mobile suave */}
               <div className="absolute inset-0 bg-gradient-to-b from-ink/60 via-transparent via-40% to-ink lg:hidden" />
@@ -156,7 +156,7 @@ export default function EscritorioPage() {
             <div className="hidden lg:block absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-ink/80 via-ink/40 to-transparent" />
 
             {/* Degradê Desktop Horizontal Suave e Contínuo */}
-            <div className="hidden lg:block absolute inset-0 bg-gradient-to-r from-ink via-ink/90 via-30% lg:via-42% to-transparent" />
+            <div className="hidden lg:block absolute inset-0 bg-gradient-to-r from-ink via-ink/85 via-30% lg:via-42% to-transparent" />
 
             {/* Linhas topográficas sutis */}
             <div className="absolute inset-0 topo-lines opacity-20 mix-blend-overlay" />
@@ -218,58 +218,58 @@ export default function EscritorioPage() {
           </div>
         </section>
 
-        {/* OS SÓCIOS FUNDADORES */}
-        <section className="py-16 md:py-24 bg-graphite border-b hairline">
-          <div className="max-w-[1440px] mx-auto px-4 sm:px-6 md:px-[5vw]">
-            <div className="reveal-on-scroll grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-              <div className="lg:col-span-5 relative">
-                <div className="relative h-[380px] sm:h-[480px] w-full overflow-hidden border border-white/10 shadow-2xl">
-                  <Image
-                    src="/assets/equipe-escritorio.jpg"
-                    alt="Dr. Braga e Dr. Xavier Sócios Fundadores"
-                    fill
-                    sizes="(max-width: 1024px) 100vw, 500px"
-                    className="object-cover object-[center_15%] filter contrast-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-ink/90 via-transparent to-transparent" />
-                  <div className="absolute bottom-4 left-4 right-4 p-3.5 glass border border-gold/30 bg-ink/90">
-                    <p className="text-[.6rem] tracking-[.25em] uppercase text-gold font-medium">
-                      Sócios Fundadores
-                    </p>
-                    <p className="text-sm font-normal text-ivory mt-0.5">
-                      Dr. Braga &amp; Dr. Xavier Advogados
-                    </p>
-                    <p className="text-[.65rem] text-muted font-light mt-0.5">
-                      Inscrição OAB/MG &bull; Atuação em todo o Brasil
-                    </p>
-                  </div>
-                </div>
-              </div>
+        {/* OS SÓCIOS FUNDADORES - SEÇÃO PANORÂMICA */}
+        <section className="py-20 md:py-32 bg-graphite border-b hairline relative overflow-hidden w-full">
+          {/* Background Panorâmico com os Sócios */}
+          <div
+            className="absolute inset-0 z-0 pointer-events-none overflow-hidden"
+            aria-hidden="true"
+          >
+            <div className="absolute inset-0 w-full h-full">
+              <Image
+                src="/assets/equipe-escritorio.webp"
+                alt="Dr. Braga e Dr. Xavier Sócios Fundadores"
+                fill
+                sizes="100vw"
+                className="object-cover object-[left_top] lg:object-[left_20%] opacity-80 lg:opacity-90 filter contrast-[1.03] brightness-[0.96]"
+              />
+              {/* Degradê Mobile */}
+              <div className="absolute inset-0 bg-gradient-to-b from-graphite/70 via-graphite/90 to-graphite lg:hidden" />
+            </div>
 
-              <div className="lg:col-span-7">
+            {/* Degradê Desktop para proteger o texto à direita */}
+            <div className="hidden lg:block absolute inset-0 bg-gradient-to-l from-graphite via-graphite/85 via-45% lg:via-52% to-transparent" />
+            <div className="absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-graphite to-transparent" />
+            <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-graphite to-transparent" />
+            <div className="absolute inset-0 topo-lines opacity-20 mix-blend-overlay" />
+          </div>
+
+          <div className="max-w-[1440px] mx-auto px-4 sm:px-6 md:px-[5vw] relative z-10">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+              <div className="reveal-on-scroll lg:col-span-7 lg:col-start-6 xl:col-span-6 xl:col-start-7 glass p-6 sm:p-9 md:p-10 border border-white/15 bg-graphite/90 backdrop-blur-2xl shadow-2xl relative ml-auto w-full">
                 <div className="w-12 h-0.5 bg-gold mb-4" />
                 <p className="text-[.58rem] tracking-[.3em] uppercase text-gold font-normal mb-2">
-                  Corpo Jurídico
+                  Corpo Jurídico &bull; Sócios Fundadores
                 </p>
                 <h2 className="font-light text-2xl sm:text-3xl lg:text-4xl leading-[1.12] text-ivory tracking-tight mb-5">
                   Advocacia personalizada com profundidade técnica e presença constante.
                 </h2>
-                <p className="text-xs sm:text-sm text-muted leading-relaxed font-light mb-4">
+                <p className="text-xs sm:text-sm text-ivory/80 leading-relaxed font-light mb-4">
                   Fundado pelos advogados Dr. Braga e Dr. Xavier, o escritório se consolidou como uma
-                  verdadeira <strong>Boutique Jurídica</strong> de defesa contra abusos bancários e
+                  verdadeira <strong className="text-ivory font-normal">Boutique Jurídica</strong> de defesa contra abusos bancários e
                   reestruturação patrimonial de produtores rurais e empresas.
                 </p>
-                <p className="text-xs sm:text-sm text-muted leading-relaxed font-light mb-6">
+                <p className="text-xs sm:text-sm text-ivory/80 leading-relaxed font-light mb-6">
                   Nosso modelo de atuação prioriza a qualidade sobre a quantidade: aceitamos um número
                   selecionado de casos para garantir que cada cliente receba atenção minuciosa,
                   estratégias personalizadas e reuniões periódicas diretamente com os fundadores.
                 </p>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  {pilares.map((pilar, index) => (
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+                  {pilares.map((pilar) => (
                     <div
                       key={pilar.title}
-                      className="p-4 bg-ink/60 border border-white/10 hover:border-gold/30 transition-colors"
+                      className="p-4 bg-ink/70 border border-white/10 hover:border-gold/30 transition-colors"
                     >
                       <h3 className="text-xs sm:text-sm font-medium text-gold mb-1.5">
                         {pilar.title}

@@ -16,9 +16,8 @@ export function Preloader() {
   const brandContainerRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    // Se o usuário prefere movimento reduzido ou o preloader já rodou na sessão
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
-    if (prefersReducedMotion || window.__BX_PRELOADER_DONE__) {
+    if (prefersReducedMotion) {
       window.__BX_PRELOADER_DONE__ = true
       window.dispatchEvent(new CustomEvent('bx:preloader-done'))
       setIsVisible(false)
@@ -32,14 +31,14 @@ export function Preloader() {
         },
       })
 
-      // 1. A marca completa (Logo + Nome Oficial) surge unificada e elegante
+      // 1. A marca completa (Logo + Nome Oficial) surge unificada e imponente (0.55s)
       tl.fromTo(
         brandContainerRef.current,
         { opacity: 0, scale: 0.94, y: 10 },
         { opacity: 1, scale: 1, y: 0, duration: 0.55, ease: 'power3.out' }
       )
 
-      // 2. Tempo de leitura e presença da marca (350ms)
+      // 2. Tempo de leitura e presença de marca (350ms)
       tl.to({}, { duration: 0.35 })
 
       // 3. Fade out sutil da marca
@@ -81,7 +80,7 @@ export function Preloader() {
       {/* Glow Dourado Sutil no Fundo */}
       <div className="absolute w-[450px] h-[450px] bg-gold/10 rounded-full blur-[120px] pointer-events-none" />
 
-      {/* Marca Oficial: Logo Real + Fonte Real Oficial (Plus Jakarta Sans) */}
+      {/* Marca Oficial: Logo Real + Tipografia Oficial */}
       <div
         ref={brandContainerRef}
         style={{ opacity: 0 }}
@@ -97,7 +96,7 @@ export function Preloader() {
           className="h-12 sm:h-14 md:h-16 w-auto object-contain drop-shadow-[0_0_20px_rgba(197,160,89,0.3)]"
         />
 
-        {/* Nome Oficial da Advocacia com a Fonte Real do Header */}
+        {/* Nome Oficial da Advocacia */}
         <div className="flex flex-col leading-none border-l hairline pl-3.5 sm:pl-4 md:pl-5">
           <span className="font-normal text-base sm:text-lg md:text-xl tracking-wider text-ivory uppercase">
             BRAGA <span className="text-gold">&amp;</span> XAVIER

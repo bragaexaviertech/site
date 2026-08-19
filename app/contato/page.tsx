@@ -149,12 +149,12 @@ export default function ContatoPage() {
           >
             <div className="absolute inset-0 w-full h-full pointer-events-none overflow-hidden">
               <Image
-                src="/assets/recepcao.jpg"
+                src="/assets/recepcao.webp"
                 alt="Recepção e Atendimento Oficial Braga & Xavier Advogados"
                 fill
                 priority
                 sizes="100vw"
-                className="object-cover object-[right_center] lg:object-[right_45%] opacity-45 lg:opacity-60 filter contrast-[1.05] brightness-[0.94]"
+                className="object-cover object-[right_center] lg:object-[right_45%] opacity-90 filter contrast-[1.03] brightness-[0.96]"
               />
               {/* Degradê Mobile suave */}
               <div className="absolute inset-0 bg-gradient-to-b from-ink/60 via-transparent via-40% to-ink lg:hidden" />
@@ -164,7 +164,7 @@ export default function ContatoPage() {
             <div className="hidden lg:block absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-ink/80 via-ink/40 to-transparent" />
 
             {/* Degradê Desktop Horizontal Suave */}
-            <div className="hidden lg:block absolute inset-0 bg-gradient-to-r from-ink via-ink/90 via-30% lg:via-42% to-transparent" />
+            <div className="hidden lg:block absolute inset-0 bg-gradient-to-r from-ink via-ink/85 via-30% lg:via-42% to-transparent" />
 
             {/* Linhas topográficas sutis */}
             <div className="absolute inset-0 topo-lines opacity-20 mix-blend-overlay" />

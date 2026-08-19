@@ -16,16 +16,17 @@ export function Founders() {
       >
         <div className="absolute inset-0 w-full h-full">
           <Image
-            src="/assets/socios-aperto-maos.png"
+            src="/assets/socios-aperto-maos.webp"
             alt="Sócios Fundadores Dr. Braga e Dr. Xavier"
             fill
+            priority
             sizes="(max-width: 1024px) 100vw, 100vw"
-            className="object-cover object-[left_top] lg:object-[left_15%] opacity-40 lg:opacity-90 filter contrast-[1.05] brightness-[0.95]"
+            className="object-cover object-[15%_top] lg:object-[8%_center] opacity-60 lg:opacity-100 filter contrast-[1.03] brightness-[1.02]"
           />
         </div>
 
-        {/* Degradê Desktop Suave que protege o card à direita sem cobrir os sócios à esquerda */}
-        <div className="hidden lg:block absolute inset-0 bg-gradient-to-l from-graphite via-graphite/85 via-45% to-transparent" />
+        {/* Degradê Desktop Recuado: Protege o card à direita sem cobrir os sócios à esquerda */}
+        <div className="hidden lg:block absolute inset-0 bg-gradient-to-l from-graphite via-graphite/95 via-28% lg:via-32% to-transparent" />
         {/* Degradê Mobile */}
         <div className="lg:hidden absolute inset-0 bg-gradient-to-b from-graphite/80 via-graphite/90 to-graphite" />
         <div className="absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-graphite to-transparent" />
@@ -36,7 +37,7 @@ export function Founders() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
           <div
             id="portrait-text-col"
-            className="reveal-on-scroll lg:col-span-6 lg:col-start-7 xl:col-span-5 xl:col-start-8 glass p-6 sm:p-9 md:p-10 border border-white/15 bg-graphite/95 backdrop-blur-2xl shadow-2xl relative"
+            className="reveal-on-scroll lg:col-span-5 lg:col-start-8 xl:col-span-5 xl:col-start-8 glass p-6 sm:p-8 md:p-9 border border-white/15 bg-graphite/95 backdrop-blur-2xl shadow-2xl relative w-full"
           >
             <div className="w-12 h-0.5 bg-gold mb-4" />
             <p className="text-[.62rem] tracking-[.3em] uppercase text-gold font-medium mb-1.5">

@@ -120,7 +120,7 @@ export function Hero({ onOpenTriagem }: HeroProps) {
         {/* Imagem dos Sócios: Ampla à direita no desktop e topo no mobile sem cobrir o Dr. Braga */}
         <div className="absolute top-0 inset-x-0 h-[48vh] sm:h-[54vh] lg:h-full lg:inset-auto lg:right-0 lg:w-[72%] xl:w-[70%] pointer-events-none overflow-hidden">
           <Image
-            src="/assets/equipe-escritorio.jpg"
+            src="/assets/equipe-escritorio.webp"
             alt="Sócios Fundadores Dr. Braga e Dr. Xavier Advogados"
             fill
             priority

@@ -161,7 +161,7 @@ export default function DireitoBancarioPage() {
             {/* Imagem de Fundo Completa preenchendo 100% da tela de ponta a ponta */}
             <div className="absolute inset-0 w-full h-full pointer-events-none overflow-hidden">
               <Image
-                src="/assets/hero-direito-bancario-bg.png"
+                src="/assets/hero-direito-bancario-bg.webp"
                 alt="Defesa em Execução Bancária e Reestruturação de Dívidas Braga & Xavier"
                 fill
                 priority

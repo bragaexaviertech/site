@@ -13,64 +13,38 @@ export function BusinessDebt({ onOpenTriagem }: BusinessDebtProps) {
   return (
     <section
       id="empresarial"
-      className="py-20 md:py-28 bg-graphite border-y hairline scroll-mt-16 relative overflow-hidden w-full"
+      className="py-20 md:py-32 bg-graphite border-y hairline scroll-mt-16 relative overflow-hidden w-full"
     >
-      {/* Background Ambiental Texturizado */}
+      {/* Background Panorâmico Cinematográfico no estilo Hero */}
       <div
         className="absolute inset-0 z-0 pointer-events-none overflow-hidden"
         aria-hidden="true"
       >
-        <div className="absolute left-0 top-0 bottom-0 w-full lg:w-[50%] h-full opacity-35">
+        <div className="absolute inset-0 w-full h-full">
           <Image
-            src="/assets/escritorio.jpg"
-            alt="Ambiente Corporativo Braga & Xavier"
+            src="/assets/escritorio.webp"
+            alt="Ambiente Corporativo Braga & Xavier Advogados"
             fill
-            sizes="(max-width: 1024px) 100vw, 50vw"
-            className="object-cover object-center filter contrast-125 brightness-75"
+            sizes="100vw"
+            className="object-cover object-[left_center] lg:object-[left_25%] opacity-80 lg:opacity-90 filter contrast-[1.03] brightness-[0.96]"
           />
+          {/* Degradê Mobile */}
+          <div className="absolute inset-0 bg-gradient-to-b from-graphite/70 via-graphite/90 to-graphite lg:hidden" />
         </div>
 
-        <div className="absolute inset-0 bg-gradient-to-r from-graphite/90 via-graphite via-45% to-graphite" />
+        {/* Degradê Desktop que protege o card à direita e revela o escritório à esquerda */}
+        <div className="hidden lg:block absolute inset-0 bg-gradient-to-l from-graphite via-graphite/85 via-45% lg:via-52% to-transparent" />
         <div className="absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-graphite to-transparent" />
         <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-graphite to-transparent" />
-        <div className="absolute inset-0 topo-lines opacity-30 mix-blend-overlay" />
+        <div className="absolute inset-0 topo-lines opacity-20 mix-blend-overlay" />
       </div>
 
       <div className="max-w-[1440px] mx-auto px-4 sm:px-6 md:px-[5vw] relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-          {/* Lado Esquerdo: Imagem Executiva com Badge Flutuante no estilo da referência */}
-          <div className="reveal-on-scroll lg:col-span-5 relative">
-            <div className="relative overflow-hidden h-[340px] sm:h-[440px] w-full border border-white/15 shadow-2xl group">
-              <Image
-                src="/assets/escritorio.jpg"
-                alt="Banca especializada em reestruturação empresarial"
-                fill
-                sizes="(max-width: 1024px) 100vw, 500px"
-                className="object-cover scale-100 group-hover:scale-105 transition-transform duration-700 ease-out"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/30 to-transparent" />
-
-              {/* Badge Flutuante Exato no Estilo da Imagem 2 */}
-              <div className="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-6 glass p-4 sm:p-5 border border-gold/35 bg-ink/95 backdrop-blur-xl shadow-2xl">
-                <div className="w-9 h-0.5 bg-gold mb-3" />
-                <p className="text-[.6rem] tracking-[.25em] uppercase text-gold font-medium mb-1.5">
-                  ATENDIMENTO DIRETO
-                </p>
-                <p className="text-xs sm:text-sm text-ivory font-light leading-relaxed">
-                  Análise direta pelos sócios fundadores com absoluto rigor técnico e sigilo.
-                </p>
-                <div className="mt-3.5 pt-3 border-t hairline flex items-center justify-between text-[.58rem] tracking-[.18em] uppercase text-champagne font-medium">
-                  <span>OAB/MG</span>
-                  <span>ATUAÇÃO BRASIL</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Lado Direito: Card Principal de Autoridade no estilo nobre */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          {/* Card Principal de Autoridade posicionado à direita */}
           <div
             id="empresarial-text-col"
-            className="reveal-on-scroll reveal-delay-1 lg:col-span-7 glass p-6 sm:p-9 md:p-10 border border-white/15 bg-graphite/90 backdrop-blur-2xl shadow-2xl relative"
+            className="reveal-on-scroll lg:col-span-7 lg:col-start-6 xl:col-span-6 xl:col-start-7 glass p-6 sm:p-9 md:p-10 border border-white/15 bg-graphite/90 backdrop-blur-2xl shadow-2xl relative ml-auto w-full"
           >
             {/* Linha de Acento Dourado */}
             <div className="w-12 h-0.5 bg-gold mb-4" />
@@ -152,4 +126,3 @@ export function BusinessDebt({ onOpenTriagem }: BusinessDebtProps) {
     </section>
   )
 }
-
